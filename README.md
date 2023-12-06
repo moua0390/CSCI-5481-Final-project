@@ -39,24 +39,32 @@ We will attempt to perform Covid genome assembly (project option 2). This will i
       <img src=images/adapter_content.png width=50% height=50%>
       
     + *Per base sequence quality* showed the quality of the bases were lower at the ends. This pushed us to use the `LEADING` and `TRAILING` parameters to improve sequence quality.
-
+      + sars_spike_protein_raw_reads_1.fastq
       <img src=images/reads1_untrimmed_per_base.png width=50% height=50%>
+ 
+      + sars_spike_protein_raw_reads_2.fastq
       <img src=images/reads2_untrimmed_per_base.png width=50% height=50%>
       
     + *Per sequence quality scores* showed that the most common average quality score was 36. This pushed us to use the `MINLEN` parameter and 35 as the threshold for this and aforementioned parameters.
-
+      + sars_spike_protein_raw_reads_1.fastq
       <img src=images/reads1_untrimmed_per_seq.png width=50% height=50%>
+ 
+      + sars_spike_protein_raw_reads_2.fastq
       <img src=images/reads2_untrimmed_per_seq.png width=50% height=50%>
       
     + For further quality filtering, we used the `SLIDINGWINDOW` parameter with a window size of 4 and a threshold of 25 to be more lenient to avoid discarding too much data.
 
     #### Findings after trimming
     + *Per base sequence quality* showed the quality of the bases improved at the ends after trimming.
-
+      + sars_spike_protein_raw_reads_1_trimmed_paired.fastq
       <img src=images/reads1_trimmed_per_base.png width=50% height=50%>
+
+      + sars_spike_protein_raw_reads_2_trimmed_paired.fastq
       <img src=images/reads2_trimmed_per_base.png width=50% height=50%>
       
     + *Per sequence quality scores* showed that the most common average quality score after trimming was 36 for read 1 and 35 for read 2. This change for read 2 likely due to sequences being dropped.
-
+      + sars_spike_protein_raw_reads_1_trimmed_paired.fastq
       <img src=images/reads1_trimmed_per_seq.png width=50% height=50%>
+
+      + sars_spike_protein_raw_reads_2_trimmed_paired.fastq
       <img src=images/reads2_trimmed_per_seq.png width=50% height=50%>
