@@ -153,7 +153,21 @@ class Assembler:
         self._remove_tips()
 
     def assemble(self):
-        pass
+        all_vertex = list(self.debrujin_graph.get_vertices())
+        v = all_vertex[0]
+        eulerian_path = [v]
+        neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+        while neighbor['out']:
+            for n in neighbor['out']:
+                if n not in eulerian_path:
+                    v = n
+                    eulerian_path.append(v)
+                    break
+            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+        assembled_path = ''
+        self.debrujin_graph.remove_nodes(list(set(all_vertex).difference(eulerian_path)))
+        for e in eulerian_path:
+            assembled_path += self.debrujin_graph.idx2label[e]
 
     def calculate_metrics(self):
         pass
