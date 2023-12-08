@@ -21,3 +21,6 @@ $read1 $read2 \
 $output1_paired $output1_unpaired \
 $output2_paired $output2_unpaired \
 SLIDINGWINDOW:4:25 LEADING:35 TRAILING:35 MINLEN:35
+
+mkdir -p lighter_out
+Lighter_exec/lighter -r trimmed_reads/sars_spike_protein_raw_reads_1_trimmed_paired.fastq -K 23 10000 -od lighter_out/
