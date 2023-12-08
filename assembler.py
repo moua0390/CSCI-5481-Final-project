@@ -154,20 +154,38 @@ class Assembler:
 
     def assemble(self):
         all_vertex = list(self.debrujin_graph.get_vertices())
-        v = all_vertex[0]
+        # Subfunction for determining the best node to start at
+        def start_node():
+            start = 0
+            for v in all_vertex:
+                degree = self.debrujin_graph.calculate_degree(v)
+                if degree['out'] - degree['in'] == 1:
+                    return v
+                if degree['out'] > 0:
+                    start = v
+            return start
+        v = start_node()
         eulerian_path = [v]
         neighbor = self.debrujin_graph.get_nodes_neighbor(v)
         while neighbor['out']:
-            for n in neighbor['out']:
+            # Ensure children nodes are in a list to work properly with for-loop
+            if not isinstance(neighbor['out'], list):
+                neighbor['out'] = [neighbor['out']]
+            for i, n in enumerate(neighbor['out'], 1):
                 if n not in eulerian_path:
                     v = n
                     eulerian_path.append(v)
+                    neighbor = self.debrujin_graph.get_nodes_neighbor(v)
                     break
-            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
-        assembled_path = ''
-        self.debrujin_graph.remove_nodes(list(set(all_vertex).difference(eulerian_path)))
-        for e in eulerian_path:
-            assembled_path += self.debrujin_graph.idx2label[e]
+                # If all children nodes are already in path, set outgoing nodes to None to end the loop on the next iteration
+                if i == len(neighbor['out']):
+                    neighbor['out'] = None
+        dropped_nodes = list(set(all_vertex).difference(eulerian_path))
+        self.debrujin_graph.remove_nodes(dropped_nodes)
+        print(f'The following {len(dropped_nodes)} nodes have been dropped to generate a eulerized graph: {dropped_nodes}')
+        assembled_path = self.debrujin_graph.idx2label[eulerian_path[0]]
+        for i in range(1, len(eulerian_path)):
+            assembled_path += self.debrujin_graph.idx2label[eulerian_path[i]]
 
     def calculate_metrics(self):
         pass
