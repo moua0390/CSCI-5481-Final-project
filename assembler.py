@@ -186,9 +186,20 @@ class Assembler:
         dropped_nodes = list(set(all_vertex).difference(eulerian_path))
         self.debrujin_graph.remove_nodes(dropped_nodes)
         print(f'The following {len(dropped_nodes)} nodes have been dropped to generate a eulerized graph: {dropped_nodes}')
-        assembled_path = self.debrujin_graph.idx2label[eulerian_path[0]]
-        for i in range(1, len(eulerian_path)):
-            assembled_path += self.debrujin_graph.idx2label[eulerian_path[i]]
+        assembled_genome = ''
+        for e in eulerian_path:
+            child_seq = self.debrujin_graph.idx2label[e]
+            if assembled_genome == '':
+                assembled_genome = child_seq
+            else:
+                child_seq_slice = child_seq
+                child_idx = assembled_genome.find(child_seq)
+                while child_idx == -1:
+                    child_seq_slice = child_seq_slice[:-1]
+                    child_idx = assembled_genome.find(child_seq_slice)
+                assembled_genome = assembled_genome[:child_idx] + child_seq
+        print(f'Assembled genome: {assembled_genome}')
+        return assembled_genome
 
     def calculate_metrics(self):
         pass
