@@ -239,32 +239,3 @@ class Assembler:
 
     def calculate_metrics(self):
         pass
-
-
-
-
-# simple_path = [v1, v2]
-# ###
-# v_cur = v2
-# while True:
-#     if self.debrujin_graph.calculate_degree(v_cur)['out'] == 1:
-#         v_next = self.debrujin_graph.get_nodes_neighbor(v_cur)['out'][0]
-#         if self.debrujin_graph.calculate_degree(v_next)['in'] == 1:
-#             simple_path.append(v_next)
-#         else:
-#             break
-#         v_cur = v_next
-#     else:
-#         break
-#
-# v_cur = v1
-# while True:
-#     if self.debrujin_graph.calculate_degree(v_cur)['in'] == 1:
-#         v_prev = self.debrujin_graph.get_nodes_neighbor(v_cur)['in'][0]
-#         if self.debrujin_graph.calculate_degree(v_prev)['out'] == 1:
-#             simple_path.index(0, v_prev)
-#         else:
-#             break
-#         v_cur = v_prev
-#     else:
-#         break
