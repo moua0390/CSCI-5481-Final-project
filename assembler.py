@@ -185,21 +185,21 @@ class Assembler:
                     neighbor['out'] = None
         dropped_nodes = list(set(all_vertex).difference(eulerian_path))
         self.debrujin_graph.remove_nodes(dropped_nodes)
-        print(f'The following {len(dropped_nodes)} nodes have been dropped to generate a eulerized graph: {dropped_nodes}')
-        assembled_genome = ''
+        print(f'The following {len(dropped_nodes)} vertices have been dropped to generate a eulerized graph: {dropped_nodes}')
+        assembled = ''
         for e in eulerian_path:
             child_seq = self.debrujin_graph.idx2label[e]
-            if assembled_genome == '':
-                assembled_genome = child_seq
+            if assembled == '':
+                assembled = child_seq
             else:
                 child_seq_slice = child_seq
-                child_idx = assembled_genome.find(child_seq)
+                child_idx = assembled.find(child_seq)
                 while child_idx == -1:
                     child_seq_slice = child_seq_slice[:-1]
-                    child_idx = assembled_genome.find(child_seq_slice)
-                assembled_genome = assembled_genome[:child_idx] + child_seq
-        print(f'Assembled genome: {assembled_genome}')
-        return assembled_genome
+                    child_idx = assembled.find(child_seq_slice)
+                assembled = assembled[:child_idx] + child_seq
+        print(f'Assembled genome: {assembled}')
+        return assembled
 
     def calculate_metrics(self):
         pass
