@@ -189,7 +189,53 @@ class Assembler:
         self._remove_tips()
 
     def assemble(self):
-        pass
+        all_vertex = list(self.debrujin_graph.get_vertices())
+        # Subfunction for determining the best node to start at
+        def start_node():
+            start = 0
+            for v in all_vertex:
+                degree = self.debrujin_graph.calculate_degree(v)
+                if degree['out'] - degree['in'] == 1:
+                    return v
+                if degree['out'] > 0:
+                    start = v
+            return start
+        v = start_node()
+        eulerian_path = [v]
+        neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+        while neighbor['out']:
+            # Ensure children nodes are in a list to work properly with for-loop
+            if not isinstance(neighbor['out'], list):
+                neighbor['out'] = [neighbor['out']]
+            # Sort children nodes in descending order by the length of their sequence.
+            # That way, the longest sequence is chosen to be a part of the Eulerian path.
+            neighbor['out'].sort(key=lambda o: len(self.debrujin_graph.idx2label[o]), reverse=True)
+            for i, n in enumerate(neighbor['out'], 1):
+                if n not in eulerian_path:
+                    v = n
+                    eulerian_path.append(v)
+                    neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+                    break
+                # If all children nodes are already in path, set outgoing nodes to None to end the loop on the next iteration
+                if i == len(neighbor['out']):
+                    neighbor['out'] = None
+        dropped_nodes = list(set(all_vertex).difference(eulerian_path))
+        self.debrujin_graph.remove_nodes(dropped_nodes)
+        print(f'The following {len(dropped_nodes)} vertices have been dropped to generate a eulerized graph: {dropped_nodes}')
+        assembled = ''
+        for e in eulerian_path:
+            child_seq = self.debrujin_graph.idx2label[e]
+            if assembled == '':
+                assembled = child_seq
+            else:
+                child_seq_slice = child_seq
+                child_idx = assembled.find(child_seq)
+                while child_idx == -1:
+                    child_seq_slice = child_seq_slice[:-1]
+                    child_idx = assembled.find(child_seq_slice)
+                assembled = assembled[:child_idx] + child_seq
+        print(f'Assembled genome: {assembled}')
+        return assembled
 
     def calculate_metrics(self):
         pass
