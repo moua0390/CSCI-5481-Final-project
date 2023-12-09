@@ -171,6 +171,9 @@ class Assembler:
             # Ensure children nodes are in a list to work properly with for-loop
             if not isinstance(neighbor['out'], list):
                 neighbor['out'] = [neighbor['out']]
+            # Sort children nodes in descending order by the length of their sequence.
+            # That way, the longest sequence is chosen to be a part of the Eulerian path.
+            neighbor['out'].sort(key=lambda o: len(self.debrujin_graph.idx2label[o]), reverse=True)
             for i, n in enumerate(neighbor['out'], 1):
                 if n not in eulerian_path:
                     v = n
