@@ -5,12 +5,14 @@ import networkx as nx
 
 
 class Graph:
-    def __init__(self):
+    def __init__(self, graph=None, idx2label_dict=None, label2idx_dict=None):
         # Initialize an empty dictionary to store the graph
-        # self.graph = nx.MultiDiGraph()
-        self.graph = nx.DiGraph()
-        self.idx2label = {}
-        self.label2idx = {}
+        self.graph = nx.DiGraph() if graph is None else graph
+        self.idx2label = {} if idx2label_dict is None else idx2label_dict
+        self.label2idx = {} if label2idx_dict is None else label2idx_dict
+
+    def __copy__(self):
+        return Graph(self.graph.copy(), self.idx2label.copy(), self.label2idx.copy())
 
     def add_vertex(self, vertex):
         # Add a vertex to the graph
@@ -100,6 +102,7 @@ class Assembler:
         self.seqs = None
         self.contigs = None
         self.debrujin_graph = Graph()
+        self.eulerian_path = Graph()
         self.K = None
         if read_path is not None:
             self.load_read_data(read_path)
@@ -140,6 +143,10 @@ class Assembler:
         net = self.debrujin_graph.plot()
         net.show(f'{name}_k_{self.K}.html')
 
+    def plot_eulerian_path(self, name='eulerian_graph'):
+        net = self.eulerian_path.plot()
+        net.show(f'{name}_k_{self.K}.html')
+
     def simplify_debrujin_graph(self):
         all_edges = self.debrujin_graph.get_edges()
         simple_edges = {}
@@ -172,8 +179,6 @@ class Assembler:
                         break
 
         for s in simple_paths:
-            if 4073 in s:
-                print(1)
             self.debrujin_graph.merge_vertices_path(s)
 
     def _remove_tips(self):
@@ -189,12 +194,13 @@ class Assembler:
         self._remove_tips()
 
     def assemble(self):
-        all_vertex = list(self.debrujin_graph.get_vertices())
+        self.eulerian_path = self.debrujin_graph.__copy__()
+        all_vertex = list(self.eulerian_path.get_vertices())
         # Subfunction for determining the best node to start at
         def start_node():
             start = 0
             for v in all_vertex:
-                degree = self.debrujin_graph.calculate_degree(v)
+                degree = self.eulerian_path.calculate_degree(v)
                 if degree['out'] - degree['in'] == 1:
                     return v
                 if degree['out'] > 0:
@@ -202,38 +208,34 @@ class Assembler:
             return start
         v = start_node()
         eulerian_path = [v]
-        neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+        neighbor = self.eulerian_path.get_nodes_neighbor(v)
         while neighbor['out']:
             # Ensure children nodes are in a list to work properly with for-loop
             if not isinstance(neighbor['out'], list):
                 neighbor['out'] = [neighbor['out']]
             # Sort children nodes in descending order by the length of their sequence.
             # That way, the longest sequence is chosen to be a part of the Eulerian path.
-            neighbor['out'].sort(key=lambda o: len(self.debrujin_graph.idx2label[o]), reverse=True)
+            neighbor['out'].sort(key=lambda o: len(self.eulerian_path.idx2label[o]), reverse=True)
             for i, n in enumerate(neighbor['out'], 1):
                 if n not in eulerian_path:
                     v = n
                     eulerian_path.append(v)
-                    neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+                    neighbor = self.eulerian_path.get_nodes_neighbor(v)
                     break
                 # If all children nodes are already in path, set outgoing nodes to None to end the loop on the next iteration
                 if i == len(neighbor['out']):
                     neighbor['out'] = None
         dropped_nodes = list(set(all_vertex).difference(eulerian_path))
-        self.debrujin_graph.remove_nodes(dropped_nodes)
+        self.eulerian_path.remove_nodes(dropped_nodes)
         print(f'The following {len(dropped_nodes)} vertices have been dropped to generate a eulerized graph: {dropped_nodes}')
         assembled = ''
         for e in eulerian_path:
-            child_seq = self.debrujin_graph.idx2label[e]
+            child_seq = self.eulerian_path.idx2label[e]
+            print(child_seq)
             if assembled == '':
                 assembled = child_seq
             else:
-                child_seq_slice = child_seq
-                child_idx = assembled.find(child_seq)
-                while child_idx == -1:
-                    child_seq_slice = child_seq_slice[:-1]
-                    child_idx = assembled.find(child_seq_slice)
-                assembled = assembled[:child_idx] + child_seq
+                assembled = assembled + child_seq[self.K-2:]
         print(f'Assembled genome: {assembled}')
         return assembled
 
