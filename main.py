@@ -1,5 +1,7 @@
 from assembler import Assembler
-from Bio import Align, AlignIO
+from Bio import Align
+import matplotlib.pyplot as plt
+from numpy import random
 import os.path
 
 def read_file(file_path):
@@ -33,14 +35,43 @@ test_assembler.assemble()
 test_assembler.plot_eulerian_path('eulerized')
 print(test_assembler.calculate_metrics())
 
+# Retrieve the first optimal alignment between the longest gene and contig
 separate_data = read_file('./SARS-CoV-2_separate_genes.fna')
+longest_gene_seq = max(separate_data[1], key=len)
+longest_gene_id = separate_data[0][separate_data[1].index(longest_gene_seq)]
+
 assembled_data = read_file('./contigs.fna')
 longest_contig_seq = max(assembled_data[1], key=len)
 longest_contig_id = assembled_data[0][assembled_data[1].index(longest_contig_seq)]
+
+optimal_alignment = None
 aligner = Align.PairwiseAligner()
 with open('alignments.txt', 'w') as alignment_file:
-    for idx, s in enumerate(separate_data[1]):
-        alignments = aligner.align(s, longest_contig_seq)
-        alignment_file.write(f'{alignments}')
-        for alignment in alignments:
-            alignment_file.write(f'{separate_data[0][idx]}, {longest_contig_id}\nScore = {alignment.score}\n{alignment}\n')
+    alignments = aligner.align(longest_gene_seq, longest_contig_seq)
+    alignment_file.write(f'{alignments}')
+    optimal_alignment = alignments[0]
+    alignment_file.write(f'{longest_gene_id}, {longest_contig_id}\nScore = {optimal_alignment.score}\n{optimal_alignment}\n')
+
+# Generate scatterplot
+num_points = len(longest_contig_seq)
+x = []
+y = [*range(num_points)]
+position = 0
+with open('alignments.txt', 'r') as alignment_file:
+    all_lines = alignment_file.readlines()
+    for idx in range(3, len(all_lines), 4):
+        for c in all_lines[idx]:
+            if c != '|' and c != '-':
+                continue
+            else:
+                position += 1
+                if c == '|':
+                    x.append(position)
+                    if len(x) == num_points:
+                        break
+colors = random.rand(num_points)
+plt.scatter(x, y, c=colors)
+plt.title("Base position in longest assembled contig vs. reference gene")
+plt.xlabel("Position in longest gene")
+plt.ylabel("Position in longest contig")
+plt.show()
