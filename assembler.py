@@ -242,6 +242,7 @@ class Assembler:
         sorted(self.contigs, key=lambda x: len(x), reverse=True)
         self.contigs = [c for c in self.contigs if len(c) > 1]
 
+        contig_file = open("contigs.fna", "w")
         self.eulerian_paths = self.debrujin_graph.__copy__()
         for idx, contig in enumerate(self.contigs, 1):
             contig_color = (int(np.random.random()*255),  int(np.random.random()*255), int(np.random.random()*255))
@@ -260,6 +261,8 @@ class Assembler:
                     assembled = assembled + child_seq[self.K-2:]
             self.assembled_contigs.append(assembled)
             print(f'Assembled contig {idx}: {assembled}')
+            contig_file.write(f'>Contig {idx}\n{assembled}\n')
+        contig_file.close()
 
     def calculate_metrics(self):
         total_length = sum([len(c) for c in self.assembled_contigs])
@@ -275,4 +278,3 @@ class Assembler:
                 N90 = len(c)
 
         return {'N50': N50, 'L50': L50, 'N90': N90}
-
