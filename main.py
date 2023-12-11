@@ -54,9 +54,9 @@ def create_scatterplot(contig_id):
                 break
     colors = random.rand(len(x))
     plt.scatter(x, y, s=1, c=colors)
-    plt.title('Base position in longest assembled contig vs. reference gene')
-    plt.xlabel('Position in longest gene')
-    plt.ylabel('Position in longest contig')
+    plt.title(f'Base position in {contig_id} vs. reference genome')
+    plt.xlabel('Position in ref genome')
+    plt.ylabel('Position in contig')
     plt.show()
 
 def read_contigs_file(file_path):
