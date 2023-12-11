@@ -91,6 +91,12 @@ class Graph:
             self.graph[v_source][next_v]['w'] = path_weight
             self.graph[v_source][next_v]['label'] = str(path_weight)
 
+    def get_out_degree(self):
+        return {x[0]: x[1] for x in self.graph.out_degree()}
+
+    def get_in_degree(self):
+        return {x[0]: x[1] for x in self.graph.in_degree()}
+
     def plot(self, width=1000, height=1000):
         copy_graph = self.graph.copy()
         net = Network(f'{width}px', f'{height}px', directed=True)
@@ -188,78 +194,96 @@ class Assembler:
         tip_nodes = []
         for v in all_vertex:
             degree = self.debrujin_graph.calculate_degree(v)
-            if degree['in'] == 0 or degree['out'] == 0:
+            if (degree['in'] == 0 and degree['out'] == 1) or\
+                (degree['in'] == 1 and degree['out'] == 0):
                 tip_nodes.append(v)
         self.debrujin_graph.remove_nodes(tip_nodes)
 
     def correct_debrujin_graph_errors(self):
         self._remove_tips()
 
+    def _get_subpath_weight(self, dest, source=None, method='weight'):
+        if method == 'label':
+            return len(self.debrujin_graph.idx2label[dest])
+        elif method == 'weight':
+            return self.debrujin_graph.graph[source][dest]['w']
+
     def assemble(self):
         all_vertex = list(self.debrujin_graph.get_vertices())
+        all_edges = list(self.debrujin_graph.get_edges())
+        self.assembling_graph = self.debrujin_graph.__copy__()
+        out_degree_dict = self.assembling_graph.get_out_degree()
+        in_degree_dict = self.assembling_graph.get_in_degree()
+
         # Subfunction for determining the best node to start at
         def start_node():
-            start = all_vertex[0]
-            for v in all_vertex:
-                degree = self.debrujin_graph.calculate_degree(v)
-                if degree['out'] - degree['in'] == 1:
+            left_nodes = [v for v in all_vertex if out_degree_dict[v] > 0]
+            start = left_nodes[0]
+            for v in left_nodes:
+                if out_degree_dict[v] > in_degree_dict[v]:
                     return v
-                if degree['out'] > 0:
+                if out_degree_dict[v] > 0:
                     start = v
             return start
+
         start_nodes = []
-        visited = []
+        visited_edges = []
         # try:
-        while len(all_vertex) > 0:
+        # while len(all_vertex) > 0:
+        while len(all_edges) > 0:
             v = start_node()
-            start_nodes.append(v)
-            eulerian_path = [v]
-            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+            # start_nodes.append(v)
+            # eulerian_path = [v]
+            eulerian_path = []
+            neighbor = self.assembling_graph.get_nodes_neighbor(v)
             while neighbor['out']:
-                # Ensure children nodes are in a list to work properly with for-loop
-                if not isinstance(neighbor['out'], list):
-                    neighbor['out'] = [neighbor['out']]
                 # Sort children nodes in descending order by the length of their sequence.
                 # That way, the longest sequence is chosen to be a part of the Eulerian path.
-                neighbor['out'].sort(key=lambda node: len(self.debrujin_graph.idx2label[node]), reverse=True)
+                neighbor['out'].sort(key=lambda node: self._get_subpath_weight(source=v, dest=node, method='weight'), reverse=True)
                 count = 0
                 for n in neighbor['out']:
-                    if n not in visited:
+                    if (v, n) not in visited_edges:
+                        eulerian_path.append((v, n))
+                        visited_edges.append((v, n))
+                        out_degree_dict[v] -= 1
+                        in_degree_dict[n] -= 1
                         v = n
-                        eulerian_path.append(v)
-                        visited.append(v)
-                        neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+                        neighbor = self.assembling_graph.get_nodes_neighbor(v)
                         break
                     count += 1
                 # Check if all children nodes are already in path
-                if count == len(neighbor['out']):
+                # if count == len(neighbor['out']):
+                if out_degree_dict[v] == 0:
                     break
+            if len(eulerian_path) == 0:
+                print(1)
             print("PATH: ", eulerian_path)
             self.contigs.append(eulerian_path)
-            all_vertex = list(set(all_vertex).difference(eulerian_path))
+            # all_vertex = list(set(all_vertex).difference(eulerian_path))
+            all_edges = list(set(all_edges).difference(eulerian_path))
         print("Assembly Done........................")
 
-        sorted(self.contigs, key=lambda x: len(x), reverse=True)
-        self.contigs = [c for c in self.contigs if len(c) > 1]
-
+        self.contigs.sort(key=lambda x: len(x), reverse=True)
+        # self.contigs = [c for c in self.contigs if len(c) > 1]
         self.eulerian_paths = self.debrujin_graph.__copy__()
+        ## Merging Contigs
         for idx, contig in enumerate(self.contigs, 1):
+            print("LENNN:", len(contig))
             contig_color = (int(np.random.random()*255),  int(np.random.random()*255), int(np.random.random()*255))
             assembled = ''
-            for ii, c in enumerate(contig):
-                if ii != len(contig)-1:
-                    next_node = contig[ii+1]
-                    self.eulerian_paths.graph[c][next_node]['color'] =\
-                        f'#{hex(contig_color[0])[2:]}{hex(contig_color[1])[2:]}{hex(contig_color[2])[2:]}'
-                    self.eulerian_paths.graph[c][next_node]['value'] = 15
+            for (src_node, dest_node) in contig:
+                self.eulerian_paths.graph[src_node][dest_node]['color'] =\
+                    f'#{hex(contig_color[0])[2:]}{hex(contig_color[1])[2:]}{hex(contig_color[2])[2:]}'
+                self.eulerian_paths.graph[src_node][dest_node]['value'] = 15
 
-                child_seq = self.eulerian_paths.idx2label[c]
+                child_seq = self.eulerian_paths.idx2label[src_node]
                 if assembled == '':
                     assembled = child_seq
                 else:
                     assembled = assembled + child_seq[self.K-2:]
             self.assembled_contigs.append(assembled)
             print(f'Assembled contig {idx}: {assembled}')
+            # self.plot_eulerian_path(f'contig_{idx}')
 
     def calculate_metrics(self):
         total_length = sum([len(c) for c in self.assembled_contigs])
