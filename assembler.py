@@ -1,5 +1,7 @@
 import os.path
 import os
+import random
+
 from pyvis.network import Network
 import networkx as nx
 import numpy as np
@@ -114,6 +116,9 @@ class Assembler:
         self.K = None
         if read_path is not None:
             self.load_read_data(read_path)
+
+        np.random.seed(1231)
+        random.seed(1231)
 
     def load_read_data(self, read_path):
         if not os.path.exists(read_path):
@@ -240,7 +245,7 @@ class Assembler:
                 # Sort children nodes in descending order by the length of their sequence.
                 # That way, the longest sequence is chosen to be a part of the Eulerian path.
                 neighbor['out'].sort(key=lambda node: self._get_subpath_weight(source=v, dest=node, method='weight'), reverse=True)
-                count = 0
+                next_neighbor = None
                 for n in neighbor['out']:
                     if (v, n) not in visited_edges:
                         eulerian_path.append((v, n))
@@ -248,15 +253,14 @@ class Assembler:
                         out_degree_dict[v] -= 1
                         in_degree_dict[n] -= 1
                         v = n
-                        neighbor = self.assembling_graph.get_nodes_neighbor(v)
+                        next_neighbor = self.assembling_graph.get_nodes_neighbor(v)
                         break
-                    count += 1
                 # Check if all children nodes are already in path
-                # if count == len(neighbor['out']):
-                if out_degree_dict[v] == 0:
+                if next_neighbor is None:
                     break
-            if len(eulerian_path) == 0:
-                print(1)
+                else:
+                    neighbor = next_neighbor
+
             print("PATH: ", eulerian_path)
             self.contigs.append(eulerian_path)
             # all_vertex = list(set(all_vertex).difference(eulerian_path))
@@ -264,16 +268,14 @@ class Assembler:
         print("Assembly Done........................")
 
         self.contigs.sort(key=lambda x: len(x), reverse=True)
-        # self.contigs = [c for c in self.contigs if len(c) > 1]
         self.eulerian_paths = self.debrujin_graph.__copy__()
-        ## Merging Contigs
+        contig_colors = ['red', 'blue', 'yellow', 'green', 'black', 'orange', 'purple']
         for idx, contig in enumerate(self.contigs, 1):
-            print("LENNN:", len(contig))
-            contig_color = (int(np.random.random()*255),  int(np.random.random()*255), int(np.random.random()*255))
+            print(len(contig), contig)
+            contig_color = contig_colors[idx%len(contig_colors)]
             assembled = ''
             for (src_node, dest_node) in contig:
-                self.eulerian_paths.graph[src_node][dest_node]['color'] =\
-                    f'#{hex(contig_color[0])[2:]}{hex(contig_color[1])[2:]}{hex(contig_color[2])[2:]}'
+                self.eulerian_paths.graph[src_node][dest_node]['color'] = contig_color
                 self.eulerian_paths.graph[src_node][dest_node]['value'] = 15
 
                 child_seq = self.eulerian_paths.idx2label[src_node]
@@ -283,7 +285,7 @@ class Assembler:
                     assembled = assembled + child_seq[self.K-2:]
             self.assembled_contigs.append(assembled)
             print(f'Assembled contig {idx}: {assembled}')
-            # self.plot_eulerian_path(f'contig_{idx}')
+            self.plot_eulerian_path(f'contig_{idx}')
 
     def calculate_metrics(self):
         total_length = sum([len(c) for c in self.assembled_contigs])

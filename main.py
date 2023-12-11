@@ -1,5 +1,7 @@
 from assembler import Assembler
 
+
+
 test_assembler = Assembler()
 test_assembler.load_read_data('./lighter_out/sars_spike_protein_raw_reads_trimmed.cor.fq')
 # test_assembler.load_read_data('./lighter_out/test.fq')
