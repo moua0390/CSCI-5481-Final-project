@@ -100,7 +100,7 @@ class Graph:
 class Assembler:
     def __init__(self, read_path=None):
         self.seqs = None
-        self.contigs = None
+        self.contigs = []
         self.debrujin_graph = Graph()
         self.eulerian_path = Graph()
         self.K = None
@@ -194,50 +194,75 @@ class Assembler:
         self._remove_tips()
 
     def assemble(self):
-        self.eulerian_path = self.debrujin_graph.__copy__()
-        all_vertex = list(self.eulerian_path.get_vertices())
+        all_vertex = list(self.debrujin_graph.get_vertices())
         # Subfunction for determining the best node to start at
         def start_node():
             start = 0
             for v in all_vertex:
-                degree = self.eulerian_path.calculate_degree(v)
+                degree = self.debrujin_graph.calculate_degree(v)
                 if degree['out'] - degree['in'] == 1:
                     return v
                 if degree['out'] > 0:
                     start = v
             return start
-        v = start_node()
-        eulerian_path = [v]
-        neighbor = self.eulerian_path.get_nodes_neighbor(v)
-        while neighbor['out']:
-            # Ensure children nodes are in a list to work properly with for-loop
-            if not isinstance(neighbor['out'], list):
-                neighbor['out'] = [neighbor['out']]
-            # Sort children nodes in descending order by the length of their sequence.
-            # That way, the longest sequence is chosen to be a part of the Eulerian path.
-            neighbor['out'].sort(key=lambda o: len(self.eulerian_path.idx2label[o]), reverse=True)
-            for i, n in enumerate(neighbor['out'], 1):
-                if n not in eulerian_path:
-                    v = n
-                    eulerian_path.append(v)
-                    neighbor = self.eulerian_path.get_nodes_neighbor(v)
-                    break
-                # If all children nodes are already in path, set outgoing nodes to None to end the loop on the next iteration
-                if i == len(neighbor['out']):
-                    neighbor['out'] = None
-        dropped_nodes = list(set(all_vertex).difference(eulerian_path))
-        self.eulerian_path.remove_nodes(dropped_nodes)
-        print(f'The following {len(dropped_nodes)} vertices have been dropped to generate a eulerized graph: {dropped_nodes}')
-        assembled = ''
-        for e in eulerian_path:
-            child_seq = self.eulerian_path.idx2label[e]
-            print(child_seq)
-            if assembled == '':
-                assembled = child_seq
-            else:
-                assembled = assembled + child_seq[self.K-2:]
-        print(f'Assembled genome: {assembled}')
-        return assembled
+        start_nodes = []
+        visited = []
+        try:
+            while (all_vertex != []):
+                v = start_node()
+                start_nodes.append(v)
+                eulerian_path = [v]
+                neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+                while neighbor['out']:
+                    # Ensure children nodes are in a list to work properly with for-loop
+                    if not isinstance(neighbor['out'], list):
+                        neighbor['out'] = [neighbor['out']]
+                    # Sort children nodes in descending order by the length of their sequence.
+                    # That way, the longest sequence is chosen to be a part of the Eulerian path.
+                    neighbor['out'].sort(key=lambda node: len(self.debrujin_graph.idx2label[node]), reverse=True)
+                    count = 0
+                    for n in neighbor['out']:
+                        if n not in visited:
+                            v = n
+                            eulerian_path.append(v)
+                            visited.append(v)
+                            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+                            break
+                        count += 1
+                    # Check if all children nodes are already in path
+                    if count == len(neighbor['out']):
+                        break
+                self.contigs.append(eulerian_path)
+                all_vertex = list(set(all_vertex).difference(eulerian_path))
+        except:
+            print(f'The following {len(all_vertex)} vertices are independent of the {len(self.contigs)} assembled contigs: {all_vertex}')
+            for idx, contig in enumerate(self.contigs, 1):
+                assembled = ''
+                for c in contig:
+                    '''
+                    The following lines of commented code is supposed to be for removing
+                    the edges between contigs on the graph, but it raises an error.
+
+                    remove_neighbor = self.debrujin_graph.get_nodes_neighbor(c)
+                    if c in start_nodes or c in all_vertex:
+                        for n_in in remove_neighbor['in']:
+                            self.debrujin_graph.graph.remove_edge(n_in, c)
+                    if c in all_vertex:
+                        for n_out in remove_neighbor['out']:
+                            self.debrujin_graph.graph.remove_edge(n_out, c)
+                    '''
+                    child_seq = self.debrujin_graph.idx2label[c]
+                    if assembled == '':
+                        assembled = child_seq
+                    else:
+                        child_seq_slice = child_seq
+                        child_idx = assembled.find(child_seq)
+                        while child_idx == -1:
+                            child_seq_slice = child_seq_slice[:-1]
+                            child_idx = assembled.find(child_seq_slice)
+                        assembled = assembled[:child_idx] + child_seq
+                print(f'Assembled contig {idx}: {assembled}')
+
 
     def calculate_metrics(self):
         pass
