@@ -2,6 +2,7 @@ import os.path
 import os
 from pyvis.network import Network
 import networkx as nx
+import numpy as np
 
 
 class Graph:
@@ -101,8 +102,9 @@ class Assembler:
     def __init__(self, read_path=None):
         self.seqs = None
         self.contigs = []
+        self.assembled_contigs = []
         self.debrujin_graph = Graph()
-        self.eulerian_path = Graph()
+        self.eulerian_paths = Graph()
         self.K = None
         if read_path is not None:
             self.load_read_data(read_path)
@@ -144,7 +146,7 @@ class Assembler:
         net.show(f'{name}_k_{self.K}.html')
 
     def plot_eulerian_path(self, name='eulerian_graph'):
-        net = self.eulerian_path.plot()
+        net = self.eulerian_paths.plot(width=400, height=400)
         net.show(f'{name}_k_{self.K}.html')
 
     def simplify_debrujin_graph(self):
@@ -197,7 +199,7 @@ class Assembler:
         all_vertex = list(self.debrujin_graph.get_vertices())
         # Subfunction for determining the best node to start at
         def start_node():
-            start = 0
+            start = all_vertex[0]
             for v in all_vertex:
                 degree = self.debrujin_graph.calculate_degree(v)
                 if degree['out'] - degree['in'] == 1:
@@ -207,62 +209,70 @@ class Assembler:
             return start
         start_nodes = []
         visited = []
-        try:
-            while (all_vertex != []):
-                v = start_node()
-                start_nodes.append(v)
-                eulerian_path = [v]
-                neighbor = self.debrujin_graph.get_nodes_neighbor(v)
-                while neighbor['out']:
-                    # Ensure children nodes are in a list to work properly with for-loop
-                    if not isinstance(neighbor['out'], list):
-                        neighbor['out'] = [neighbor['out']]
-                    # Sort children nodes in descending order by the length of their sequence.
-                    # That way, the longest sequence is chosen to be a part of the Eulerian path.
-                    neighbor['out'].sort(key=lambda node: len(self.debrujin_graph.idx2label[node]), reverse=True)
-                    count = 0
-                    for n in neighbor['out']:
-                        if n not in visited:
-                            v = n
-                            eulerian_path.append(v)
-                            visited.append(v)
-                            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
-                            break
-                        count += 1
-                    # Check if all children nodes are already in path
-                    if count == len(neighbor['out']):
+        # try:
+        while len(all_vertex) > 0:
+            v = start_node()
+            start_nodes.append(v)
+            eulerian_path = [v]
+            neighbor = self.debrujin_graph.get_nodes_neighbor(v)
+            while neighbor['out']:
+                # Ensure children nodes are in a list to work properly with for-loop
+                if not isinstance(neighbor['out'], list):
+                    neighbor['out'] = [neighbor['out']]
+                # Sort children nodes in descending order by the length of their sequence.
+                # That way, the longest sequence is chosen to be a part of the Eulerian path.
+                neighbor['out'].sort(key=lambda node: len(self.debrujin_graph.idx2label[node]), reverse=True)
+                count = 0
+                for n in neighbor['out']:
+                    if n not in visited:
+                        v = n
+                        eulerian_path.append(v)
+                        visited.append(v)
+                        neighbor = self.debrujin_graph.get_nodes_neighbor(v)
                         break
-                self.contigs.append(eulerian_path)
-                all_vertex = list(set(all_vertex).difference(eulerian_path))
-        except:
-            print(f'The following {len(all_vertex)} vertices are independent of the {len(self.contigs)} assembled contigs: {all_vertex}')
-            for idx, contig in enumerate(self.contigs, 1):
-                assembled = ''
-                for c in contig:
-                    '''
-                    The following lines of commented code is supposed to be for removing
-                    the edges between contigs on the graph, but it raises an error.
+                    count += 1
+                # Check if all children nodes are already in path
+                if count == len(neighbor['out']):
+                    break
+            print("PATH: ", eulerian_path)
+            self.contigs.append(eulerian_path)
+            all_vertex = list(set(all_vertex).difference(eulerian_path))
+        print("Assembly Done........................")
 
-                    remove_neighbor = self.debrujin_graph.get_nodes_neighbor(c)
-                    if c in start_nodes or c in all_vertex:
-                        for n_in in remove_neighbor['in']:
-                            self.debrujin_graph.graph.remove_edge(n_in, c)
-                    if c in all_vertex:
-                        for n_out in remove_neighbor['out']:
-                            self.debrujin_graph.graph.remove_edge(n_out, c)
-                    '''
-                    child_seq = self.debrujin_graph.idx2label[c]
-                    if assembled == '':
-                        assembled = child_seq
-                    else:
-                        child_seq_slice = child_seq
-                        child_idx = assembled.find(child_seq)
-                        while child_idx == -1:
-                            child_seq_slice = child_seq_slice[:-1]
-                            child_idx = assembled.find(child_seq_slice)
-                        assembled = assembled[:child_idx] + child_seq
-                print(f'Assembled contig {idx}: {assembled}')
+        sorted(self.contigs, key=lambda x: len(x), reverse=True)
+        self.contigs = [c for c in self.contigs if len(c) > 1]
 
+        self.eulerian_paths = self.debrujin_graph.__copy__()
+        for idx, contig in enumerate(self.contigs, 1):
+            contig_color = (int(np.random.random()*255),  int(np.random.random()*255), int(np.random.random()*255))
+            assembled = ''
+            for ii, c in enumerate(contig):
+                if ii != len(contig)-1:
+                    next_node = contig[ii+1]
+                    self.eulerian_paths.graph[c][next_node]['color'] =\
+                        f'#{hex(contig_color[0])[2:]}{hex(contig_color[1])[2:]}{hex(contig_color[2])[2:]}'
+                    self.eulerian_paths.graph[c][next_node]['value'] = 15
+
+                child_seq = self.eulerian_paths.idx2label[c]
+                if assembled == '':
+                    assembled = child_seq
+                else:
+                    assembled = assembled + child_seq[self.K-2:]
+            self.assembled_contigs.append(assembled)
+            print(f'Assembled contig {idx}: {assembled}')
 
     def calculate_metrics(self):
-        pass
+        total_length = sum([len(c) for c in self.assembled_contigs])
+        N50, L50, N90 = None, None, None
+        cur_sum = 0
+        for idx, c in enumerate(self.assembled_contigs, 1):
+            cur_sum += len(c)
+            if cur_sum >= 0.5 * total_length and N50 is None:
+                N50 = len(c)
+                L50 = idx
+
+            if cur_sum >= 0.9 * total_length and N90 is None:
+                N90 = len(c)
+
+        return {'N50': N50, 'L50': L50, 'N90': N90}
+
