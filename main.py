@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from numpy import random
 import os.path
 
-def read_file(file_path):
+def read_contigs_file(file_path):
     if not os.path.exists(file_path):
         print(f"File does not exist: {file_path}")
     with open(file_path, 'r') as f:
@@ -15,11 +15,7 @@ def read_file(file_path):
         if idx % 2 != 0:
             sequences.append(r[:-1])
         else:
-            if '>lcl|' in r:
-                id = r[:r.index(' ')].strip('>lcl|')
-            else:
-                id = r[1:-1]
-            ids.append(id)
+            ids.append(r[1:-1])
     return (ids, sequences)
 
 test_assembler = Assembler()
@@ -35,22 +31,34 @@ test_assembler.assemble()
 test_assembler.plot_eulerian_path('eulerized')
 print(test_assembler.calculate_metrics())
 
-# Retrieve the first optimal alignment between the longest gene and contig
-separate_data = read_file('./SARS-CoV-2_separate_genes.fna')
-longest_gene_seq = max(separate_data[1], key=len)
-longest_gene_id = separate_data[0][separate_data[1].index(longest_gene_seq)]
+# Retrieve sequence from whole genome file
+whole_genome_id = 'SARS-CoV-2_whole_genome'
+whole_genome_seq = None
+with open(f'{whole_genome_id}.fna', 'r') as whole_genome_file:
+    whole_genome_seq = whole_genome_file.readlines()[1]
 
-assembled_data = read_file('./contigs.fna')
+# Retrieve longest contig
+assembled_data = read_contigs_file('./contigs.fna')
+all_contigs_id = assembled_data[0]
+all_contigs_seq = assembled_data[1]
 longest_contig_seq = max(assembled_data[1], key=len)
 longest_contig_id = assembled_data[0][assembled_data[1].index(longest_contig_seq)]
 
 optimal_alignment = None
 aligner = Align.PairwiseAligner()
+aligner.match_score = 1
+aligner.mismatch_score = -2
+aligner.open_gap_score = -1
+aligner.extend_gap_score = -1
 with open('alignments.txt', 'w') as alignment_file:
-    alignments = aligner.align(longest_gene_seq, longest_contig_seq)
-    alignment_file.write(f'{alignments}')
-    optimal_alignment = alignments[0]
-    alignment_file.write(f'{longest_gene_id}, {longest_contig_id}\nScore = {optimal_alignment.score}\n{optimal_alignment}\n')
+    # Align all contigs against whole genome sequence
+    for i in range(len(all_contigs_seq)):
+        contig_id = all_contigs_id[i]
+        contig_seq = all_contigs_seq[i]
+        alignments = aligner.align(whole_genome_seq, contig_seq)
+        # Retrieve only the first optimal alignment to save computation time
+        first_alignment = alignments[0]
+        alignment_file.write(f'{whole_genome_id}, {contig_id}\nScore = {first_alignment.score}\n{first_alignment}\n')
 
 # Generate scatterplot
 num_points = len(longest_contig_seq)
@@ -70,7 +78,7 @@ with open('alignments.txt', 'r') as alignment_file:
                     if len(x) == num_points:
                         break
 colors = random.rand(num_points)
-plt.scatter(x, y, c=colors)
+plt.scatter(x, y, s=1, c=colors)
 plt.title("Base position in longest assembled contig vs. reference gene")
 plt.xlabel("Position in longest gene")
 plt.ylabel("Position in longest contig")
