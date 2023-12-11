@@ -146,7 +146,7 @@ class Assembler:
         net.show(f'{name}_k_{self.K}.html')
 
     def plot_eulerian_path(self, name='eulerian_graph'):
-        net = self.eulerian_paths.plot(width=400, height=400)
+        net = self.eulerian_paths.plot(width=1000, height=1000)
         net.show(f'{name}_k_{self.K}.html')
 
     def simplify_debrujin_graph(self):
