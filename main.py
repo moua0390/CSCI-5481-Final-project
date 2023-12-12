@@ -6,14 +6,19 @@ import os.path
 
 def alignment():
     # Retrieve sequence from whole genome file
-    whole_genome_id = 'SARS-CoV-2_whole_genome'
+    # whole_genome_id = 'SARS-CoV-2_whole_genome'
+    whole_genome_id = 'sars_spike_protein_assembled'
     whole_genome_seq = None
     with open(f'{whole_genome_id}.fna', 'r') as whole_genome_file:
         whole_genome_seq = whole_genome_file.readlines()[1]
     
     aligner = Align.PairwiseAligner()
-    aligner.match_score = 1
-    aligner.mismatch_score = -2
+    aligner.match_score = 2
+    aligner.mismatch_score = -1
+    aligner.mode = 'local'
+    # aligner.left_gap_score = 0
+    # aligner.right_gap_score = 0
+    # aligner.mismatch_score = -2
     aligner.open_gap_score = -1
     aligner.extend_gap_score = -1
     with open('alignments.txt', 'w') as alignment_file:
@@ -93,4 +98,4 @@ contig_dict = read_contigs_file('./contigs.fna')
 # Align all contigs to whole genome sequence. Save alignments to a text file
 alignment()
 # Generate a scatterplot of the base positions in the whole genome file and given contig
-create_scatterplot('Contig 2')
+create_scatterplot('Contig 1')
