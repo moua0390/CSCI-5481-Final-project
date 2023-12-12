@@ -117,8 +117,7 @@ class Assembler:
         if read_path is not None:
             self.load_read_data(read_path)
 
-        np.random.seed(1231)
-        random.seed(1231)
+        self.contig_colors = ['red', 'blue', 'yellow', 'green', 'black', 'orange', 'purple']
 
     def load_read_data(self, read_path):
         if not os.path.exists(read_path):
@@ -213,6 +212,39 @@ class Assembler:
         elif method == 'weight':
             return self.debrujin_graph.graph[source][dest]['w']
 
+
+    def merge_contigs(self):
+        # remove bubbles
+        remove_idx = []
+        for idx1, con1 in enumerate(self.contigs):
+            contig1_start = con1['path'][0][0]
+            contig1_end = con1['path'][-1][1]
+            for idx2, con2 in enumerate(self.contigs):
+                if idx1 == idx2:
+                    continue
+
+                contig2_node_list = [x[0] for x in con2['path']]
+                contig2_node_list.append(con2['path'][-1][1])
+                st2 = None
+                end2 = None
+                for ii, v in enumerate(contig2_node_list):
+                    if v == contig1_start:
+                        st2 = ii
+                    elif v == contig1_end:
+                        end2 = ii
+
+                if st2 is not None and end2 is not None:
+                    intersection_weights1 = con1['weight']
+                    intersection_weights2 = con2['weight'][min(st2, end2): max(end2, st2)+1]
+                    if sum(intersection_weights1)/len(intersection_weights1) < sum(intersection_weights2)/len(intersection_weights2):
+                        remove_idx.append(idx1)
+
+        self.contigs = [c for i, c in enumerate(self.contigs) if i not in remove_idx]
+
+        # remove low probable
+        self.contigs = [c for c in self.contigs if sum(c['weight'])/len(c['weight']) > 10]
+
+
     def assemble(self):
         all_vertex = list(self.debrujin_graph.get_vertices())
         all_edges = list(self.debrujin_graph.get_edges())
@@ -236,11 +268,13 @@ class Assembler:
         # try:
         # while len(all_vertex) > 0:
         while len(all_edges) > 0:
-            v = start_node()
+            start_v = start_node()
             # start_nodes.append(v)
             # eulerian_path = [v]
             eulerian_path = []
-            neighbor = self.assembling_graph.get_nodes_neighbor(v)
+            eulerian_weight = []
+            neighbor = self.assembling_graph.get_nodes_neighbor(start_v)
+            v = start_v
             while neighbor['out']:
                 # Sort children nodes in descending order by the length of their sequence.
                 # That way, the longest sequence is chosen to be a part of the Eulerian path.
@@ -250,6 +284,7 @@ class Assembler:
                     if (v, n) not in visited_edges:
                         eulerian_path.append((v, n))
                         visited_edges.append((v, n))
+                        eulerian_weight.append(self.assembling_graph.graph[v][n]['w'])
                         out_degree_dict[v] -= 1
                         in_degree_dict[n] -= 1
                         v = n
@@ -261,18 +296,45 @@ class Assembler:
                 else:
                     neighbor = next_neighbor
 
+            neighbor = self.assembling_graph.get_nodes_neighbor(start_v)
+            v = start_v
+            while neighbor['in']:
+                # Sort children nodes in descending order by the length of their sequence.
+                # That way, the longest sequence is chosen to be a part of the Eulerian path.
+                neighbor['in'].sort(
+                    key=lambda node: self._get_subpath_weight(source=node, dest=v, method='weight'),
+                    reverse=True)
+                prev_neighbor = None
+                for n in neighbor['in']:
+                    if (n, v) not in visited_edges:
+                        eulerian_path.append((n, v))
+                        visited_edges.append((n, v))
+                        eulerian_weight.append(self.assembling_graph.graph[n][v]['w'])
+                        out_degree_dict[n] -= 1
+                        in_degree_dict[v] -= 1
+                        v = n
+                        prev_neighbor = self.assembling_graph.get_nodes_neighbor(v)
+                        break
+                if prev_neighbor is None:
+                    break
+                else:
+                    neighbor = prev_neighbor
+
             print("PATH: ", eulerian_path)
-            self.contigs.append(eulerian_path)
+            self.contigs.append({'path': eulerian_path, 'weight': eulerian_weight})
             # all_vertex = list(set(all_vertex).difference(eulerian_path))
             all_edges = list(set(all_edges).difference(eulerian_path))
+
         print("Assembly Done........................")
 
-        self.contigs.sort(key=lambda x: len(x), reverse=True)
+        self.contigs.sort(key=lambda x: len(x['path']), reverse=True)
+        self.merge_contigs()
+
         self.eulerian_paths = self.debrujin_graph.__copy__()
-        contig_colors = ['red', 'blue', 'yellow', 'green', 'black', 'orange', 'purple']
-        for idx, contig in enumerate(self.contigs, 1):
+        contig_list = [x['path'] for x in self.contigs]
+        for idx, contig in enumerate(contig_list, 1):
             print(len(contig), contig)
-            contig_color = contig_colors[idx%len(contig_colors)]
+            contig_color = self.contig_colors[idx%len(self.contig_colors)]
             assembled = ''
             for (src_node, dest_node) in contig:
                 self.eulerian_paths.graph[src_node][dest_node]['color'] = contig_color
