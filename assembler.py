@@ -330,6 +330,7 @@ class Assembler:
         self.contigs.sort(key=lambda x: len(x['path']), reverse=True)
         self.merge_contigs()
 
+        contig_file = open("contigs.fna", "w")
         self.eulerian_paths = self.debrujin_graph.__copy__()
         contig_list = [x['path'] for x in self.contigs]
         for idx, contig in enumerate(contig_list, 1):
@@ -348,6 +349,8 @@ class Assembler:
             self.assembled_contigs.append(assembled)
             print(f'Assembled contig {idx}: {assembled}')
             self.plot_eulerian_path(f'contig_{idx}')
+            contig_file.write(f'>Contig {idx}\n{assembled}\n')
+        contig_file.close()
 
     def calculate_metrics(self):
         total_length = sum([len(c) for c in self.assembled_contigs])
@@ -363,4 +366,3 @@ class Assembler:
                 N90 = len(c)
 
         return {'N50': N50, 'L50': L50, 'N90': N90}
-
