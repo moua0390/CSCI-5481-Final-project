@@ -1,0 +1,599 @@
+sars_spike_protein_assembled <- Contig 1, Score = 5900.0
+target          307 GCTGGATTTTTGGTACTACTTTAGATTCGAAGACCCAGTCCCTACTTATTGTTAATAACG
+                  0 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query             0 GCTGGATTTTTGGTACTACTTTAGATTCGAAGACCCAGTCCCTACTTATTGTTAATAACG
+
+target          367 CTACTAATGTTGTTATTAAAGTCTGTGAATTTCAATTTTGTAATGATCCATTTTTGGGTG
+                 60 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query            60 CTACTAATGTTGTTATTAAAGTCTGTGAATTTCAATTTTGTAATGATCCATTTTTGGGTG
+
+target          427 TTTATTACCACAAAAACAACAAAAGTTGGATGGAAAGTGAGTTCAGAGTTTATTCTAGTG
+                120 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           120 TTTATTACCACAAAAACAACAAAAGTTGGATGGAAAGTGAGTTCAGAGTTTATTCTAGTG
+
+target          487 CGAATAATTGCACTTTTGAATATGTCTCTCAGCCTTTTCTTATGGACCTTGAAGGAAAAC
+                180 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           180 CGAATAATTGCACTTTTGAATATGTCTCTCAGCCTTTTCTTATGGACCTTGAAGGAAAAC
+
+target          547 AGGGTAATTTCAAAAATCTTAGGGAATTTGTGTTTAAGAATATTGATGGTTATTTTAAAA
+                240 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           240 AGGGTAATTTCAAAAATCTTAGGGAATTTGTGTTTAAGAATATTGATGGTTATTTTAAAA
+
+target          607 TATATTCTAAGCACACGCCTATTAATTTAGTGCGTGATCTCCCTCAGGGTTTTTCGGCTT
+                300 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           300 TATATTCTAAGCACACGCCTATTAATTTAGTGCGTGATCTCCCTCAGGGTTTTTCGGCTT
+
+target          667 TAGAACCATTGGTAGATTTGCCAATAGGTATTAACATCACTAGGTTTCAAACTTTACTTG
+                360 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           360 TAGAACCATTGGTAGATTTGCCAATAGGTATTAACATCACTAGGTTTCAAACTTTACTTG
+
+target          727 CTTTACATAGAAGTTATTTGACTCCTGGTGATTCTTCTTCAGGTTGGACAGCTGGTGCTG
+                420 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           420 CTTTACATAGAAGTTATTTGACTCCTGGTGATTCTTCTTCAGGTTGGACAGCTGGTGCTG
+
+target          787 CAGCTTATTATGTGGGTTATCTTCAACCTAGGACTTTTCTATTAAAATATAATGAAAATG
+                480 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           480 CAGCTTATTATGTGGGTTATCTTCAACCTAGGACTTTTCTATTAAAATATAATGAAAATG
+
+target          847 GAACCATTACAGATGCTGTAGACTGTGCACTTGACCCTCTCTCAGAAACAAAGTGTACGT
+                540 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           540 GAACCATTACAGATGCTGTAGACTGTGCACTTGACCCTCTCTCAGAAACAAAGTGTACGT
+
+target          907 TGAAATCCTTCACTGTAGAAAAAGGAATCTATCAAACTTCTAACTTTAGAGTCCAACCAA
+                600 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           600 TGAAATCCTTCACTGTAGAAAAAGGAATCTATCAAACTTCTAACTTTAGAGTCCAACCAA
+
+target          967 CAGAATCTATTGTTAGATTTCCTAATATTACAAACTTGTGCCCTTTTGGTGAAGTTTTTA
+                660 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           660 CAGAATCTATTGTTAGATTTCCTAATATTACAAACTTGTGCCCTTTTGGTGAAGTTTTTA
+
+target         1027 ACGCCACCAGATTTGCATCTGTTTATGCTTGGAACAGGAAGAGAATCAGCAACTGTGTTG
+                720 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           720 ACGCCACCAGATTTGCATCTGTTTATGCTTGGAACAGGAAGAGAATCAGCAACTGTGTTG
+
+target         1087 CTGATTATTCTGTCCTATATAATTCCGCATCATTTTCCACTTTTAAGTGTTATGGAGTGT
+                780 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           780 CTGATTATTCTGTCCTATATAATTCCGCATCATTTTCCACTTTTAAGTGTTATGGAGTGT
+
+target         1147 CTCCTACTAAATTAAATGATCTCTGCTTTACTAATGTCTATGCAGATTCATTTGTAATTA
+                840 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           840 CTCCTACTAAATTAAATGATCTCTGCTTTACTAATGTCTATGCAGATTCATTTGTAATTA
+
+target         1207 GAGGTGATGAAGTCAGACAAATCGCTCCAGGGCAAACTGGAAAGATTGCTGATTATAATT
+                900 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           900 GAGGTGATGAAGTCAGACAAATCGCTCCAGGGCAAACTGGAAAGATTGCTGATTATAATT
+
+target         1267 ATAAATTACCAGATGATTTTACAGGCTGCGTTATAGCTTGGAATTCTAACAATCTTGATT
+                960 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query           960 ATAAATTACCAGATGATTTTACAGGCTGCGTTATAGCTTGGAATTCTAACAATCTTGATT
+
+target         1327 CTAAGGTTGGTGGTAATTATAATTACCTGTATAGATTGTTTAGGAAGTCTAATCTCAAAC
+               1020 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1020 CTAAGGTTGGTGGTAATTATAATTACCTGTATAGATTGTTTAGGAAGTCTAATCTCAAAC
+
+target         1387 CTTTTGAGAGAGATATTTCAACTGAAATCTATCAGGCCGGTAGCACACCTTGTAATGGTG
+               1080 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1080 CTTTTGAGAGAGATATTTCAACTGAAATCTATCAGGCCGGTAGCACACCTTGTAATGGTG
+
+target         1447 TTGAAGGTTTTAATTGTTACTTTCCTTTACAATCATATGGTTTCCAACCCACTAATGGTG
+               1140 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1140 TTGAAGGTTTTAATTGTTACTTTCCTTTACAATCATATGGTTTCCAACCCACTAATGGTG
+
+target         1507 TTGGTTACCAACCATACAGAGTAGTAGTACTTTCTTTTGAACTTCTACATGCACCAGCAA
+               1200 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1200 TTGGTTACCAACCATACAGAGTAGTAGTACTTTCTTTTGAACTTCTACATGCACCAGCAA
+
+target         1567 CTGTTTGTGGACCTAAAAAGTCTACTAATTTGGTTAAAAACAAATGTGTCAATTTCAACT
+               1260 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1260 CTGTTTGTGGACCTAAAAAGTCTACTAATTTGGTTAAAAACAAATGTGTCAATTTCAACT
+
+target         1627 TCAATGGTTTAACAGGCACAGGTGTTCTTACTGAGTCTAACAAAAAGTTTCTGCCTTTCC
+               1320 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1320 TCAATGGTTTAACAGGCACAGGTGTTCTTACTGAGTCTAACAAAAAGTTTCTGCCTTTCC
+
+target         1687 AACAATTTGGCAGAGACATTGCTGACACTACTGATGCTGTCCGTGATCCACAGACACTTG
+               1380 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1380 AACAATTTGGCAGAGACATTGCTGACACTACTGATGCTGTCCGTGATCCACAGACACTTG
+
+target         1747 AGATTCTTGACATTACACCATGTTCTTTTGGTGGTGTCAGTGTTATAACACCAGGAACAA
+               1440 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1440 AGATTCTTGACATTACACCATGTTCTTTTGGTGGTGTCAGTGTTATAACACCAGGAACAA
+
+target         1807 ATACTTCTAACCAGGTTGCTGTTCTTTATCAGGATGTTAACTGCACAGAAGTCCCTGTTG
+               1500 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1500 ATACTTCTAACCAGGTTGCTGTTCTTTATCAGGATGTTAACTGCACAGAAGTCCCTGTTG
+
+target         1867 CTATTCATGCAGATCAACTTACTCCTACTTGGCGTGTTTATTCTACAGGTTCTAATGTTT
+               1560 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1560 CTATTCATGCAGATCAACTTACTCCTACTTGGCGTGTTTATTCTACAGGTTCTAATGTTT
+
+target         1927 TTCAAACACGTGCAGGCTGTTTAATAGGGGCTGAACATGTCAACAACTCATATGAGTGTG
+               1620 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1620 TTCAAACACGTGCAGGCTGTTTAATAGGGGCTGAACATGTCAACAACTCATATGAGTGTG
+
+target         1987 ACATACCCATTGGTGCAGGTATATGCGCTAGTTATCAGACTCAGACTAATTCTCCTCGGC
+               1680 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1680 ACATACCCATTGGTGCAGGTATATGCGCTAGTTATCAGACTCAGACTAATTCTCCTCGGC
+
+target         2047 GGGCACGTAGTGTAGCTAGTCAATCCATCATTGCCTACACTATGTCACTTGGTGCAGAAA
+               1740 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1740 GGGCACGTAGTGTAGCTAGTCAATCCATCATTGCCTACACTATGTCACTTGGTGCAGAAA
+
+target         2107 ATTCAGTTGCTTACTCTAATAACTCTATTGCCATACCCACAAATTTTACTATTAGTGTTA
+               1800 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1800 ATTCAGTTGCTTACTCTAATAACTCTATTGCCATACCCACAAATTTTACTATTAGTGTTA
+
+target         2167 CCACAGAAATTCTACCAGTGTCTATGACCAAGACATCAGTAGATTGTACAATGTACATTT
+               1860 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1860 CCACAGAAATTCTACCAGTGTCTATGACCAAGACATCAGTAGATTGTACAATGTACATTT
+
+target         2227 GTGGTGATTCAACTGAATGCAGCAATCTTTTGTTGCAATATGGCAGTTTTTGTACACAAT
+               1920 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1920 GTGGTGATTCAACTGAATGCAGCAATCTTTTGTTGCAATATGGCAGTTTTTGTACACAAT
+
+target         2287 TAAACCGTGCTTTAACTGGAATAGCTGTTGAACAAGACAAAAACACCCAAGAAGTTTTTG
+               1980 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          1980 TAAACCGTGCTTTAACTGGAATAGCTGTTGAACAAGACAAAAACACCCAAGAAGTTTTTG
+
+target         2347 CACAAGTCAAACAAATTTACAAAACACCACCAATTAAAGATTTTGGTGGTTTTAATTTTT
+               2040 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2040 CACAAGTCAAACAAATTTACAAAACACCACCAATTAAAGATTTTGGTGGTTTTAATTTTT
+
+target         2407 CACAAATATTACCAGATCCATCAAAACCAAGCAAGAGGTCATTTATTGAAGATCTACTTT
+               2100 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2100 CACAAATATTACCAGATCCATCAAAACCAAGCAAGAGGTCATTTATTGAAGATCTACTTT
+
+target         2467 TCAACAAAGTGACACTTGCAGATGCTGGCTTCATCAAACAATATGGTGATTGCCTTGGTG
+               2160 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2160 TCAACAAAGTGACACTTGCAGATGCTGGCTTCATCAAACAATATGGTGATTGCCTTGGTG
+
+target         2527 ATATTGCTGCTAGAGACCTCATTTGTGCACAAAAGTTTAACGGCCTTACTGTTTTGCCAC
+               2220 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2220 ATATTGCTGCTAGAGACCTCATTTGTGCACAAAAGTTTAACGGCCTTACTGTTTTGCCAC
+
+target         2587 CTTTGCTCACAGATGAAATGATTGCTCAATACACTTCTGCACTGTTAGCGGGTACAATCA
+               2280 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2280 CTTTGCTCACAGATGAAATGATTGCTCAATACACTTCTGCACTGTTAGCGGGTACAATCA
+
+target         2647 CTTCTGGTTGGACCTTTGGTGCAGGTGCTGCATTACAAATACCATTTGCTATGCAAATGG
+               2340 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2340 CTTCTGGTTGGACCTTTGGTGCAGGTGCTGCATTACAAATACCATTTGCTATGCAAATGG
+
+target         2707 CTTATAGGTTTAATGGTATTGGAGTTACACAGAATGTTCTCTATGAGAACCAAAAATTGA
+               2400 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2400 CTTATAGGTTTAATGGTATTGGAGTTACACAGAATGTTCTCTATGAGAACCAAAAATTGA
+
+target         2767 TTGCCAACCAATTTAATAGTGCTATTGGCAAAATTCAAGACTCACTTTCTTCCACAGCAA
+               2460 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2460 TTGCCAACCAATTTAATAGTGCTATTGGCAAAATTCAAGACTCACTTTCTTCCACAGCAA
+
+target         2827 GTGCACTTGGAAAACTTCAAGATGTGGTCAACCAAAATGCACAAGCTTTAAACACGCTTG
+               2520 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2520 GTGCACTTGGAAAACTTCAAGATGTGGTCAACCAAAATGCACAAGCTTTAAACACGCTTG
+
+target         2887 TTAAACAACTTAGCTCCAATTTTGGTGCAATTTCAAGTGTTTTAAATGATATCCTTTCAC
+               2580 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2580 TTAAACAACTTAGCTCCAATTTTGGTGCAATTTCAAGTGTTTTAAATGATATCCTTTCAC
+
+target         2947 GTCTTGACAAAGTTGAGGCTGAAGTGCAAATTGATAGGTTGATCACAGGCAGACTTCAAA
+               2640 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2640 GTCTTGACAAAGTTGAGGCTGAAGTGCAAATTGATAGGTTGATCACAGGCAGACTTCAAA
+
+target         3007 GTTTGCAGACATATGTGACTCAACAATTAATTAGAGCTGCAGAAATCAGAGCTTCTGCTA
+               2700 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2700 GTTTGCAGACATATGTGACTCAACAATTAATTAGAGCTGCAGAAATCAGAGCTTCTGCTA
+
+target         3067 ATCTTGCTGCTACTAAAATGTCAGAGTGTGTACTTGGACAATCAAAAAGAGTTGATTTTT
+               2760 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+query          2760 ATCTTGCTGCTACTAAAATGTCAGAGTGTGTACTTGGACAATCAAAAAGAGTTGATTTTT
+
+target         3127 GTGGAAAGGGCTATCATCTTATGTCCTTCCCTCAGTCAGCACCTCATGGTGTAGTCTTCT
+               2820 |-||...|.--||.|.-||---|||||.||.|.--|-|--|--|.|||||||--|-|.-|
+query          2820 G-GGTTTGA--TAACC-CT---GTCCTACCATT--T-A--A--TGATGGTGT--T-TA-T
+
+target         3187 TGCATGTGACTTATGTCC-CTGCACAAGA--AA-AGAACTTCACA-ACTGCTCCTGCCAT
+               2880 |---|-||-|||----||-|||-|.|||.--||-|.||-|--|-|-|.-|||.--|--||
+query          2862 T---T-TG-CTT----CCACTG-AGAAGTCTAACATAA-T--A-AGAG-GCTG--G--AT
+
+target         3242 TTGTCATGATGGAAAAGCACACTTTCC-T-CGTGAAGGTGTCTTTGTTTCAAATGGCACA
+               2940 ||-|--||.|--|----|.-|||||..-|-|||-|---|.-|.|-||.||---|||.||-
+query          2903 TT-T--TGGT--A----CT-ACTTTAGATTCGT-A---TA-CAT-GTCTC---TGGGAC-
+
+target         3300 CACTGGTTTGTAACACAAAGGAATTTTTATGAACCACAAATCATTACTACAGA-CAACA-
+               3000 ||.||||----|-|.-||-|-|-|.|||-|---|||-|--|.-|||||..-|.-|--||-
+query          2943 CAATGGT----A-CT-AA-G-A-TCTTT-T---CCA-A--TG-TTACTTG-GTTC--CAT
+
+target         3358 -CATTTGTGTCTGGTAACTGTGATGTTGTAATAGGAATTGTCAAC-A-ACACAGTTTATG
+               3060 -||---||.|||.||.|--|||-||||--|||.----||.-||||-|-|-||--|..||.
+query          2983 GCA---GTCTCTAGTCA--GTG-TGTT--AATC----TTA-CAACCAGA-AC--TCAATT
+
+target         3415 ATCCTTTGCA-AC-CTGAATTAGACTCATTCA-AGGAGGAGTT-AG-A---T-A-AATA-
+               3120 |.||..||||-||-||-||||---||--||||-|.|.||.|||-|.-|---|-|-||-|-
+query          3027 ACCCCCTGCATACACT-AATT---CT--TTCACACGTGGTGTTTATTACCCTGACAA-AG
+
+target         3464 TTTTAAGAATCATACATCACCAGATGTTGATTTAGGTGACATCTCTGGCATTAATGCTTC
+               3180 ||||.|||-||---|-|||---|.|-||-|..|---|.|-|-|||.||-|.|--||-|||
+query          3080 TTTTCAGA-TC---C-TCA---GTT-TT-ACAT---TCA-A-CTCAGG-ACT--TG-TTC
+
+target         3524 AGTTGTAAACATT 3537
+               3240 --||--|.-|-|| 3253
+query          3121 --TT--AC-C-TT 3128
+
+sars_spike_protein_assembled <- Contig 2, Score = 1565.0
+target         1072 TCAGCAACTGTGTTGCTGATTATTCTGTCCTAT-ATAATTCCGCATCATTTTCCACTTTT
+                  0 |.||||-|||-|.|-|.||.|..|||-||--||-|-||||.-|||.||...|||||----
+query             4 TGAGCA-CTG-GCT-CAGAGTCGTCT-TC--ATCA-AATTT-GCAGCAGGATCCAC----
+
+target         1131 AAGTGTTATGGAGTGTCTCCT--ACTA-AATTAAATG-ATCTCTG-CTTTACTAATGTCT
+                 60 |||....|.--||---|-|||--|.-|-||.||.|-|-|.||.-|-|.|-||-|--|-|.
+query            52 AAGAACAAC--AG---C-CCTTGAG-ACAACTACA-GCAACTG-GTCAT-AC-A--G-CA
+
+target         1186 ATGCAGATTCATTTGT-A--ATTAG-A-GGTGATGAAGTCAG--ACAAATCGCTCCAGGG
+                120 |.|||.|---|||-||-|--||||.-|-||..||.|||.|||--|.|||.|-||--||.-
+query            98 AAGCATA---ATT-GTCACCATTACTATGGCAATCAAGCCAGCTATAAAAC-CT--AGC-
+
+target         1239 CAAACTGGAAAGATTGCTGATT--ATA-A-T--T-ATAAATTACCAGATGATT-TTACAG
+                180 ||||-||.|..-||.||.-|||--|||-|-|--|-|||..||-|||-|-|-||-||..||
+query           150 CAAA-TGTACC-ATGGCC-ATTTTATATACTGCTCATACTTT-CCA-A-G-TTCTTGGAG
+
+target         1291 GCTGCGTT-ATAGCTTGGAATTCTAACAATCTTG--ATTCTAAGGTTG-GT-GGT-AATT
+                240 .-|-||.|-|.||.||.-|-||-|||-|.|||||--|..||.|--|||-|.-|||-||||
+query           203 A-T-CGATGAGAGATTC-A-TT-TAA-ATTCTTGGCAACCTCA--TTGAGGCGGTCAATT
+
+target         1345 ATAATTACCTGTATAGATTGTTTAGGAAGTCTAATCTCAAACCTTT-TGAGAGAGATATT
+                300 -|.-||---|-|-|-||.||||||------|-||-||.||.|.||.-||..||||||.|-
+query           255 -TC-TT---T-T-T-GAATGTTTA------C-AA-CTGAAGCATTAATGCCAGAGATGT-
+
+target         1404 TCAACTGAAATCTATCAGGCCGGTAGCACACCTTGTAATGGTG-TTGAAGGT-TTTAATT
+                360 -||.||-|||||.|-||.-|.|||-|-|----|-|||-||.|.-||.||.-|-||||-|.
+query           298 -CACCT-AAATCAA-CAT-CTGGT-G-A----T-GTA-TGATTCTTAAAA-TATTTA-TC
+
+target         1462 GTTACTT-TCCTTTACA--A-TCATA-T---GGTTTCCAACCCA-C-TAA--TGGTGTTG
+                420 -|.|||.-|||||.|-|--|-||-||-|---||||.|.||..-|-|-|||--||-|||||
+query           344 -TAACTCCTCCTTGA-ATGAGTC-TAATTCAGGTTGCAAAGG-ATCATAAACTG-TGTTG
+
+target         1510 GTT-ACCAA--CC-AT-ACAGAG-T-AGTAGT-ACTTTCTTTTGA-AC---T-TCTACAT
+                480 -||-||-||--||-||-|||-|.-|-|.-|||-||---|.---||-||---|-|.|---|
+query           399 -TTGAC-AATTCCTATTACA-ACATCAC-AGTTAC---CA---GACACAAATGTGT---T
+
+target         1557 G-CACCAGCAACTG-TTTGTGGACC-TAAAAAGTCTACTAATT-TGGTTAAAAACAAATG
+                540 |-|...||.||-||-|||||||..|-||||||.||--||--||-||-|||.||||.|.||
+query           446 GTCTGTAGTAA-TGATTTGTGGTTCATAAAAATTC--CT--TTGTG-TTACAAACCAGTG
+
+target         1613 TGT-CAATTTCAACTTCAATGGTTTAACAGGCACAGGTGTTCTTACTGAGTCTAACAAAA
+                600 |||-|.||||.||.--|||.|----|-||--|-|---|-|-|--||-|||.--||-|---
+query           500 TGTGCCATTTGAAA--CAAAG----A-CA--C-C---T-T-C--AC-GAGG--AA-A---
+
+target         1672 AGTTTCTGCCTTTCCA--A---CAATTTGGCAGAGA-CA-TTGCTGACACTACTGATGCT
+                660 -||.|--||.||||||--|---|||.|-|||||-||-||-|||-|||-|.|.||..|-||
+query           536 -GTGT--GCTTTTCCATCATGACAAAT-GGCAG-GAGCAGTTG-TGA-AGTTCTTTT-CT
+
+target         1725 -GTCC-GTGATCCACA-GACACTTG-A-GATTCTTGACATTACACCATGTTCTTTTGGTG
+                720 -||.|-|.||-|-|.|-|.|||.||-|-||.----|||-|-||||||||.------||||
+query           588 TGTGCAGGGA-C-ATAAGTCACATGCAAGAA----GAC-T-ACACCATGA------GGTG
+
+target         1780 GTGTCAGTGTTATAACACCAGGAACA-AATACTTCTAACCAGGTTGCTGTTCTTTATCAG
+                780 .||.|--||--|...-|--||||-||-||.|-|..||.||------||-|||.--|-||.
+query           634 CTGAC--TG--AGGG-A--AGGA-CATAAGA-TGATAGCC------CT-TTCC--A-CAA
+
+target         1839 GATGTTAACTGCACAGAAGTCCCTGTTGCTATTCATGCAGA-TCAACTTACTCCTACTTG
+                840 -|----||-|-||-|.---||..|-|||--|||.-|.||-|-|-|-|--||.|-|-||-|
+query           675 -A----AA-T-CA-AC---TCTTT-TTG--ATTG-TCCA-AGT-A-C--ACAC-T-CT-G
+
+target         1898 GCGTGTTTATTCTA-CAGGTTCTAATGTTTTTCA-AA-CAC-G-T----GCAGGCTGT--
+                900 .|.|-||||.|--|-|||---|-||-|.||..||-||-|.|-|-|----||||-||.|--
+query           712 ACAT-TTTAGT--AGCAG---C-AA-GATTAGCAGAAGCTCTGATTTCTGCAG-CTCTAA
+
+target         1947 TTAATAGGGGCTGAACATGTCAACAACTCATATGAGTGTGACATACCCATTGGTGCAGGT
+                960 |||||.|.---|||----||||-||--|-||--|--|.||-||.||---||--||.||-|
+query           763 TTAATTGT---TGA----GTCA-CA--T-AT--G--TCTG-CAAAC---TT--TGAAG-T
+
+target         2007 ATATGCGCTAGTTATCAGACTCAGACT-AATTCTCCTCGGCGGGCACGTAGTGTAGCTAG
+               1020 .|--||-||-||.||||-||-|.-|-|-||||-|----|-|----||-|--|.-|||.--
+query           801 CT--GC-CT-GTGATCA-AC-CT-A-TCAATT-T----G-C----AC-T--TC-AGCC--
+
+target         2066 TCAATCCATCATTGCCTACACTATGTCACTTGGTGCAGAAA-AT-TCAGTTGCTTACTCT
+               1080 ||||-|--|--|||--|-||--|-|--||--|-||-|-||.-||-|||-||--|-|----
+query           837 TCAA-C--T--TTG--T-CA--A-G--AC--G-TG-A-AAGGATATCA-TT--T-A----
+
+target         2124 AATA-ACTCT-A--TTGCCATACCCACAAATTTTA-CTATTAGT-GTT-ACCA--CA-G-
+               1140 ||-|-|||-|-|--||||-|--||-|-|||||..|-|||--|||-|||-|.||--|.-|-
+query           871 AA-ACACT-TGAAATTGC-A--CC-A-AAATTGGAGCTA--AGTTGTTTAACAAGCGTGT
+
+target         2173 --AAA--TTCTACCAGTGTC-TATGACCAAGACATCA-GTAGATTGTACAATGTACATTT
+               1200 --|||--||.|.|-|.|.|.-|-||||||---||||.-|.||.||-|.|||-||.||.||
+query           922 TTAAAGCTTGTGC-ATTTTGGT-TGACCA---CATCTTGAAGTTT-TCCAA-GTGCACTT
+
+target         2227 G-TGGTGATTCAACTGAA--TGCAGCAATCTT---TTGTTGC-AATATGGCAGT-TT---
+               1260 |-||-||.---||--|||--||-||---||||---||-||||-||||-|-||.|-||---
+query           975 GCTG-TGG---AA--GAAAGTG-AG---TCTTGAATT-TTGCCAATA-G-CACTATTAAA
+
+target         2276 TTG-TACACAATTAAACCGTGCTT-TAACT-G-GAATAG-CTGTTG-AAC---AAGACAA
+               1320 |||-|...||||.||....||.||-|.|-|-|-|||.|.-||||-|-|||---||.||.|
+query          1022 TTGGTTGGCAATCAATTTTTGGTTCTCA-TAGAGAACATTCTGT-GTAACTCCAATACCA
+
+target         2327 A-AACACCCAAGAAGTT-TTTGCACAAGTCAAACAA-ATTTACAAAACACCACCAATT-A
+               1380 .-||-|||.|.-|||..-||||||.|-|-||||...-||||..||..||.||||--|.-|
+query          1080 TTAA-ACCTAT-AAGCCATTTGCATA-G-CAAATGGTATTTGTAATGCAGCACC--TGCA
+
+target         2383 --AAGATTTTGGTGGTTTTAATTTTTCACA-AA-T-ATT--ACCAGATCCATCAAAACCA
+               1440 --||-|----|||..----||-----|-||-||-|-|||--|||.|--|--|-||--|-|
+query          1134 CCAA-A----GGTCC----AA-----C-CAGAAGTGATTGTACCCG--C--T-AA--C-A
+
+target         2436 A-GCAAGAGGTCATTTATTGAAG-A-TCTACTTTTCAACAAAGTGACACTTGCAGATGCT
+               1500 .-|||-||.||.-|--|||||-|-|-||-|-|||-||.|.--||||-----|||.|.|-|
+query          1171 GTGCA-GAAGTG-T--ATTGA-GCAATC-A-TTT-CATCT--GTGA-----GCAAAGG-T
+
+target         2493 GGCTTCATCAAACAATATGGTGATTGCCTTGGTGATATTGCTGCTAGAGACCTCATTTGT
+               1560 |||---|--|||||.||.||------||--|-|--||--------|-|--|-|--|||||
+query          1215 GGC---A--AAACAGTAAGG------CC--G-T--TA--------A-A--C-T--TTTGT
+
+target         2553 GCACAAAAGTTTAACGGCCT-TA-CTGTT-T-TGCCACCTTTGC--TCACAGATGAAATG
+               1620 |||||||.|---|--||.||-||-|.|..-|-|-|-|||...||--||||.-||-|.-||
+query          1245 GCACAAATG---A--GGTCTCTAGCAGCAATAT-C-ACCAAGGCAATCACC-AT-AT-TG
+
+target         2607 ATTGCTCAATACA-CTTCTGCACTGTTAGCGGGTACAATCACTTCTGGTTGGACCTTTGG
+               1680 .|||.|.||..||-|.||||||.-||--|----|-||--|--||-||-|||.|..---|-
+query          1295 TTTGATGAAGCCAGCATCTGCAA-GT--G----T-CA--C--TT-TG-TTGAAAA---G-
+
+target         2666 TGCAGGTGCTGCATTACAAAT-ACCATTTGCTATGCAAATGGCTTAT-A-GG-T-T--TA
+               1740 |--||.|-||.||.||-||-|-|||-|---||-|||.--|||.||-|-|-||-|-|--||
+query          1337 T--AGAT-CTTCAATA-AA-TGACC-T---CT-TGCT--TGGTTT-TGATGGATCTGGTA
+
+target         2719 ATGGTATTGGAGTTACACAGAATGTTCTCTATGAGAACCA--AAAAT-TGATTGCCAACC
+               1800 ||.-|-|||.-|--|-|-|-|||-|-----|--|-|||||--|||||-|--||---||--
+query          1384 ATA-T-TTGT-G--A-A-A-AAT-T-----A--A-AACCACCAAAATCT--TT---AA--
+
+target         2776 AATTTAATAGTGCTATTGGCAAAATTCAAGACTCACTTTCTTCCACAGCAAGTGCACTTG
+               1860 --||..-|.|||.|-|||.-|||.||---|..|.||||.-|.|.|-|--||.|.|--|||
+query          1420 --TTGG-TGGTGTT-TTGT-AAATTT---GTTTGACTTG-TGCAA-A--AACTTC--TTG
+
+target         2836 GAAAACTTCAAGATGTGGT-CAACCAAA-ATGCACAAGCTTTAAA-CACGCTT-----GT
+               1920 |.....||.--|-|.|.||-||||-|..-||.|-||-|-||-|||-||||.||-----||
+query          1466 GGTGTTTTT--G-TCTTGTTCAAC-AGCTATTC-CA-G-TT-AAAGCACGGTTTAATTGT
+
+target         2888 -TA-AACAACTTAGCTCCAATTTTGGTGCAATTTCAAGTGTTTTAAATGATATCCTTTCA
+               1980 -||-||.||||--||-|-|-|.|||---|||---|||-------||--|||-|.||.-||
+query          1518 GTACAAAAACT--GC-C-A-TATTG---CAA---CAA-------AA--GAT-TGCTG-CA
+
+target         2946 CGTCTTGACAAAGTTGAGGCTGA--AGTGCAAATTGATAGGTTGATCACAGGCAGACTTC
+               2040 --|-|---||--|||||..|--|--|---|||||-|-||..|||-|-|||..|.-|||.-
+query          1556 --T-T---CA--GTTGAATC--ACCA---CAAAT-G-TACATTG-T-ACAATCT-ACTG-
+
+target         3004 AAAGT-TTGCAGACATATGTGACTCAACAATTAATTAGAGCTGCAGAAATCAGAGCTTCT
+               2100 |.-||-|||--|.||||-|--||--|-|--|------|-|-|--||||-|------||||
+query          1597 AT-GTCTTG--GTCATA-G--AC--A-C--T------G-G-T--AGAA-T------TTCT
+
+target         3063 GC--TAATCTTGCTGCTACTAAAATGTCAGAGTGTGTACTTGGACAATCAAAAAGAGTTG
+               2160 |.--|||-|.--||..||.||||||.|--|.|-|-|||-|-||-||||-|----|||||-
+query          1629 GTGGTAA-CA--CTAATAGTAAAATTT--GTG-G-GTA-T-GG-CAAT-A----GAGTT-
+
+target         3121 ATTTTTGTGGAAAGGGCTATCATCTTA-TGTCCTTC--C-CTCA-GTCAGCACCTCATGG
+               2220 |||...||--||-|--|-|--|-||.|-|-|--|||--|-|-||-||.|-||--|-|-|-
+query          1673 ATTAGAGT--AA-G--C-A--A-CTGAAT-T--TTCTGCAC-CAAGTGA-CA--T-A-G-
+
+target         3176 TGTAGTCT-TCTTGCATGTGACT---TA---T--GT-CCCTGCACAAGAAAAGAACTTCA
+               2280 |||||.|.-|..||.||-|||||---||---|--||-|||-||-|.||.|--|||-||-|
+query          1714 TGTAGGCAATGATGGAT-TGACTAGCTACACTACGTGCCC-GC-CGAGGA--GAA-TT-A
+
+target         3226 CAACTGCTCCTGCCATTTGTCATGATGGAAA-AGCACACTTT-C-CTCG-TGA-AGGT-G
+               2340 -----|-||-||--|---|||-||||--||.-|||.||-|.|-|-||.|-|.|-||-|-|
+query          1767 -----G-TC-TG--A---GTC-TGAT--AACTAGCGCA-TATACACTGGCTCAGAG-TCG
+
+target         3280 TCTT 3284
+               2400 |||| 2404
+query          1810 TCTT 1814
+
+sars_spike_protein_assembled <- Contig 3, Score = 2083.0
+target          238 ATAACC-CTGTCCTACCATTTAATGATGGT--GTTTATTTTGCTTCCACTGAGA-AGTCT
+                  0 ||||.|-|-|-||-|--|.|-|.-||-|-|--|||.||.|-||----|-|||-|-||-|-
+query             0 ATAAACAC-G-CC-A--AGT-AG-GA-G-TAAGTTGATCT-GC----A-TGA-ATAG-C-
+
+target          294 AACATAATAAGAGGCTGGATTTTTGGTACTACTTTAGATTCGAAGACCCAGTCCCT-ACT
+                 60 ||||------|-||----|.||.||-|.|-|-----|-||--||--|--|-|||-|-|-|
+query            42 AACA------G-GG----ACTTCTG-TGC-A-----G-TT--AA--C--A-TCC-TGA-T
+
+target          353 TATTGTTAATAAC-GCTACTAATGTTGTTATTAAAGTCTGTGAATTTCAATTTTGTAATG
+                120 -|-----||.|||-||.||.--||--||||.-||-||.|.||--||.|--|..|||.||.
+query            74 -A-----AAGAACAGCAACC--TG--GTTAG-AA-GTATTTG--TTCC--TGGTGTTATA
+
+target          412 ATCCATTTTTGGGTGTTTATTACCACAAAAACAACAAAAGTTGGATGGAAAGTGA-G--T
+                180 |-|-|.|---|-------|.-|||||.||||.||||----|-||-||.||.||.|-|--|
+query           118 A-C-ACT---G-------AC-ACCACCAAAAGAACA----T-GG-TGTAATGTCAAGAAT
+
+target          469 -TCAGAGTTTATTCTAGTGCGAATAATTG-CA-CTTTTGAATATGTCTCTCAGCCTTTTC
+                240 -|||-|||.|---||-|||-||-|.|..|-||-|.|..|--||-||.||--|||..|.||
+query           159 CTCA-AGTGT---CT-GTG-GA-TCACGGACAGCATCAG--TA-GTGTC--AGCAATGTC
+
+target          526 TTATGGACC---TTGAAGGAAAA-CAGGGTAA-TTTCAAAAATCTTAGGGAATTTGTGTT
+                300 |.-||--||---|||..|||||.-|||.--||-|||.-----|.||||--|.|..||---
+query           207 TC-TG--CCAAATTGTTGGAAAGGCAGA--AACTTTT-----TGTTAG--ACTCAGT---
+
+target          581 TAAGAATAT-TGATGGTTATTTTAAAATATATTCTAAGCACACGCCTATTAATTTAGTGC
+                360 -|||||.|.-||-||..|.||--|||..||-|-----|-|-|-|--|-|.||---|-|--
+query           252 -AAGAACACCTG-TGCCTGTT--AAACCAT-T-----G-A-A-G--T-TGAA---A-T--
+
+target          640 GTGATCTCCCTCAGGGTTT-TTCGGCTTTAGAACCA--TTGGTAGA-TTTGCCAATAGGT
+                420 -|||-|.|----|---|||-||----||||-|-|||--||.|||||-|||.----|||||
+query           290 -TGA-CAC----A---TTTGTT----TTTA-A-CCAAATTAGTAGACTTTT----TAGGT
+
+target          696 --ATTAACA-TCACTAGGTTTCAAACTTTACTTGCTTTACATAGAAGTTATTTGACTCCT
+                480 --|..||||-|..||-|||.-||---|.||...|-||.|.|-||||---|.|--|||.||
+query           331 CCACAAACAGTTGCT-GGTG-CA---TGTAGAAG-TTCAAA-AGAA---AGT--ACTACT
+
+target          753 GGTGATTCTTCT-TCA-GGTTGG-ACAGCTGGTGCTGCAGCTTATTATGTGGGTT--ATC
+                540 ----|--||-||-|-|-||||||-|-|-|-----|..||.|--||||-|||||||--|--
+query           379 ----A--CT-CTGT-ATGGTTGGTA-A-C-----CAACACC--ATTA-GTGGGTTGGA--
+
+target          808 TTCAACC-TAGGACTTTTCTATTA--AAA-TAT-AATGAAAA--TGGAAC-C-ATTACA-
+                600 ---||||-||.||-||.|.-|--|--|||-||.-|||.||||--|..|||-|-||||||-
+query           419 ---AACCATATGA-TTGTA-A--AGGAAAGTAACAATTAAAACCTTCAACACCATTACAA
+
+target          858 GATGCTG-TA--GAC-TG-T-G----CACTTGACC---CTCTCTCAGAAACAAAGTGT-A
+                660 |.||-||-||--|.|-||-|-|----||.||||..---||||||||-|||.---||.|-|
+query           472 GGTG-TGCTACCGGCCTGATAGATTTCAGTTGAAATATCTCTCTCA-AAAG---GTTTGA
+
+target          904 CG-TTGAAATCCTTCACTGTAGAAAAAGGAATCTAT-CA---AACTTCTAACTTTAGAGT
+                720 -|-||-|.|-|-|||-||--|-||.||----|||||-||---||-||.|||-||-|----
+query           527 -GATT-AGA-C-TTC-CT--A-AACAA----TCTATACAGGTAA-TTATAA-TT-A----
+
+target          959 CCAACCAAC---AGAATCTA--TTGTTAGATTTCCTAA--TATTACAAA-CTTGTGCCCT
+                780 |||-|||||---||||||.|--||||||||.||||-||--|||.||..|-|.|||....|
+query           568 CCA-CCAACCTTAGAATCAAGATTGTTAGAATTCC-AAGCTATAACGCAGCCTGTAAAAT
+
+target         1011 T-T-TGGTGAAGTT-T--TTA-ACGCCACCAGAT-TTGCATCTGTTTATGCT-TGGAACA
+                840 .-|-||||-||.||-|--|||-|..|-|.||-||-||.|--|.||||--||.-||||.|-
+query           626 CATCTGGT-AATTTATAATTATAATC-AGCA-ATCTTTC--CAGTTT--GCCCTGGAGC-
+
+target         1063 GGAA--GA--GAAT-CAGCAACTGTG-TTGC---TGATTATTCTGTCCTATATA-ATTCC
+                900 |-|.--|.--||.|-||.||.||.|.-||.|---|||--||-|||-|--|||.|-|||.-
+query           678 G-ATTTGTCTGACTTCATCACCTCTAATTACAAATGA--AT-CTG-C--ATAGACATTA-
+
+target         1113 GCAT--CATTT-TCCACTTTTAAGTGTTA-T-GGAGTGTCTCCTACTAA-A-TTAAA--T
+                960 |.|.--||...-||-|-|||-||-|-|||-|-||||...||||-|-|||-|-|||||--|
+query           730 GTAAAGCAGAGATC-A-TTT-AA-T-TTAGTAGGAGACACTCC-A-TAACACTTAAAAGT
+
+target         1164 G-ATCTCTGCTTTACT-AATGTCTAT-G--CAGA-T--TCATTTGTAATTAGAGGTGATG
+               1020 |-|...-||.|.--|.-|||-|.|||-|--||||-|--|||---|.||.-|.||.||.||
+query           783 GGAAAA-TGATG--CGGAAT-TATATAGGACAGAATAATCA---GCAAC-ACAGTTGCTG
+
+target         1216 AAGTCAGACAAATC--GCTCCAGGGCA-AA-CTG--GAAAGAT-TGCTGAT-TATAATTA
+               1080 |.-||.--|.--||--|.||||.|-||-||-|.|--|.||-||-||.||..-|-|||--|
+query           835 AT-TCT--CT--TCCTGTTCCAAG-CATAAACAGATGCAA-ATCTGGTGGCGT-TAA--A
+
+target         1268 TAAATT-ACCAGATGATTTTACAGGCTGCGTTATAGCTT-GGAATTCTAACAATCTTGAT
+               1140 -||.||-||||.|.|...--|||.|.|.-||.|||--||-||||.|||||||||.--|||
+query           885 -AACTTCACCAAAAGGGC--ACAAGTTT-GTAATA--TTAGGAAATCTAACAATA--GAT
+
+target         1326 TCTAAGGTTGGT-GG--T--AA--TTATAA-TTACCTGTATAGATTG-TTT----A--G-
+               1200 |||--|-|||||-||--|--||--|||.||-||---||-|||||||.-|||----|--|-
+query           937 TCT--G-TTGGTTGGACTCTAAAGTTAGAAGTT---TG-ATAGATTCCTTTTTCTACAGT
+
+target         1370 GAAG--TCT-AATC-TCAAACCTT-TT---GAGAGAGATATTTCAACTGAAATCTATCAG
+               1260 ||||--|.|-||-|-|-|.||.||-||---|||||||..-|--|||.||----|-|-|||
+query           990 GAAGGATTTCAA-CGT-ACACTTTGTTTCTGAGAGAGGG-T--CAAGTG----C-A-CAG
+
+target         1422 GCCGGTAGCA-CACCTTGTAATGGTGTTGAAGGTTTTAATTGTTACTTTCCTT-TACAA-
+               1320 .|---||-||-||.||-||||||||-|..|---||||.|||.|-|-|||--|.-||.||-
+query          1039 TC---TA-CAGCATCT-GTAATGGT-TCCA---TTTTCATTAT-A-TTT--TAATAGAAA
+
+target         1479 --TCATATGGTT-----TCCAACCCAC-TAATG-G-TGTTG-----G-T-TACCAACCAT
+               1380 --||.||-||||-----|--|||||||-||||.-|-||..|-----|-|-|-||||||-|
+query          1086 AGTCCTA-GGTTGAAGAT--AACCCACATAATAAGCTGCAGCACCAGCTGT-CCAACC-T
+
+target         1522 -ACAGA-G--T-AGTAGTACTTTCTTTTGAACTTCTACATGCACCAGCAACT---GTTTG
+               1440 -|-|||-|--|-|..||.|.|--|...|-||||||||--||.|.-|||||.|---|||||
+query          1141 GA-AGAAGAATCACCAGGAGT--CAAAT-AACTTCTA--TGTAA-AGCAAGTAAAGTTTG
+
+target         1574 TGGACCTAAAAAGTCTACTAATTTGGTTAAAAACAAATGTGTCAATTTCAACTTCAATGG
+               1500 ..-|||||----||.-|-|-----|-||||.|.|.|.||-|-|||.|-|.||--||||||
+query          1194 AA-ACCTA----GTG-A-T-----G-TTAATACCTATTG-G-CAAAT-CTAC--CAATGG
+
+target         1634 TT-TAACAGGC-A----C----AGGT-GTTCTTACTG-AGTCTAACAA-AA-AGTT-TCT
+               1560 ||-|||-||.|-|----|----|||.-|.||--||-|-|--||||-|.-||-||..-|.|
+query          1236 TTCTAA-AGCCGAAAAACCCTGAGGGAGATC--AC-GCA--CTAA-ATTAATAGGCGTGT
+
+target         1679 GCCTTTCCAACA-ATTTGGCAGAGACATTGCTGACACTACTGATGCTGTCCGTGATCCAC
+               1620 ||-||..-||.|-||||.--|-|-|-||..|---||-|-|.-||.-|-||.-|.|.|-||
+query          1289 GC-TTAG-AATATATTTT--A-A-A-ATAAC---CA-T-CA-ATA-T-TCT-TAAAC-AC
+
+target         1738 AGA--CACTTGAGATTCTTGACATTACACCATGTTCTT--TTGGTGGTGTCAGT--GTTA
+               1680 |.|--|.||.-|||||.||||.|||||-||-||||-||--||...|||.-||-|--|--|
+query          1332 AAATTCCCTA-AGATTTTTGAAATTAC-CC-TGTT-TTCCTTCAAGGTC-CA-TAAG--A
+
+target         1792 TAACAC-CAG-GA-ACAAATACTTCTAACCAGGTTGCTGTTCTTT--ATC-AGGATGTTA
+               1740 -||-|.-|.|-||-|||--||-|||.||--||-|-||..||.||.--|-|-||.||.--|
+query          1384 -AA-AGGCTGAGAGACA--TA-TTCAAA--AG-T-GCAATTATTCGCA-CTAGAATA--A
+
+target         1846 ACTGCACAGAAGTCCCTGTTGCTATTCATGCAGATCAACTTACTCCTACTTGGCGTGTTT
+               1800 |||-|.--|||.||.||-||-|----|||-|----||||||--|--|.-|||---|-|||
+query          1432 ACT-CT--GAACTCACT-TT-C----CAT-C----CAACTT--T--TG-TTG---T-TTT
+
+target         1906 ATTCTACAGGTTCTAATGTTTTTCAAACACGTGCAGGC-TG--T--TTA-ATAGGGGCTG
+               1860 -|.-|---|||---|||-------||||||.--||...-||--|--|||-|.|..---||
+query          1469 -TG-T---GGT---AAT-------AAACACC--CAAAAATGGATCATTACAAAAT---TG
+
+target         1960 AACATGTCAACA-ACTCATATGAGTGTGACATACCCATTGGTGCAGGTATATGCGCTAGT
+               1920 ||-||-|||-||-|||.-||--|-|.--|||-||--|||-----||-||---|||-|--|
+query          1509 AA-AT-TCA-CAGACTT-TA--A-TA--ACA-AC--ATT-----AG-TA---GCG-T--T
+
+target         2019 TATCAGACTCAGACTAATTCTCCTCGGCGGGCACGTAGTGTAGCTAGTCAATCCATCATT
+               1980 -||-----|-|-||-|||-|-|-|-|-|..-||.-|.|-|||--|-||||--|-|-|-|-
+query          1545 -AT-----T-A-AC-AAT-C-C-T-G-CAC-CAA-TGG-GTA--T-GTCA--C-A-C-T-
+
+target         2079 GCCTACACTATGTCACTTGGTG-CA-GAAAATTCAGTTGCTTACTCTAATAACTCTATTG
+               2040 -|--|---||||--|.|||.||-||-|----|||||...||-|-|-|||-|-|---|--|
+query          1579 -C--A---TATG--AGTTGTTGACATG----TTCAGCCCCT-A-T-TAA-A-C---A--G
+
+target         2137 CCATACCCACAAAT-TTT-A----CTATTAGTGTTACCAC-AGAAATTCTACCAGTGTCT
+               2100 ||-|.|--||.--|-|||-|----|-|||||.---|||..-||||-|..-||-|----|-
+query          1617 CC-TGC--ACG--TGTTTGAAAAAC-ATTAGA---ACCTGTAGAA-TAA-AC-A----C-
+
+target         2190 ATGACCAAGACATCAGTAGA-TTG-TA-CAATG-TACAT-TTGTGGTGATTCAACTGAAT
+               2160 --|-|||||.-|..||||-|-|||-||-|--||-||-||-||-||-|||..-||.|.||.
+query          1660 --G-CCAAGT-AGGAGTA-AGTTGATATC--TGGTA-ATATT-TG-TGAAA-AATTAAAA
+
+target         2245 GCAGCAA--TCTTTTGTTGCAATATGGCAGT-TTTTGTACACAATTAAACCGTGCTTTAA
+               2220 .||.|||--|||||------|||-|||..||-|||||||-|-|-||------||-|||.|
+query          1709 CCACCAAAATCTTT------AAT-TGGTGGTGTTTTGTA-A-A-TT------TG-TTTGA
+
+target         2302 CTGGAATAGCTGTTGAACAAGACAAAAACACCCAAGAAGTTTTTGCACAAGTCAAACAAA
+               2280 ||----|-|-||-----|||-|-||---|..|...|..|||||||.-|---|--------
+query          1752 CT----T-G-TG-----CAA-A-AA---CTTCTTGGGTGTTTTTGT-C---T--------
+
+target         2362 T-TTACAAAACACC-A--CCAATTAAAG-ATTTTGGTGGTTTTAATTTT-TCACAAATAT
+               2340 |-||-|||--||.|-|--|||.||||||-|.---|||--||--||||.|-|-|||||.|.
+query          1784 TGTT-CAA--CAGCTATTCCAGTTAAAGCAC---GGT--TT--AATTGTGT-ACAAAAAC
+
+target         2416 TACCAGATCCAT-CAAAACCAAGCAAGAG-G-T-CATTTA-TTGAAGATCTACTTTTCAA
+               2400 |.|||.||---|-|||--|-||--||||.-|-|-||||.|-|||||--||-||----||-
+query          1833 TGCCATAT---TGCAA--C-AA--AAGATTGCTGCATTCAGTTGAA--TC-AC----CA-
+
+target         2471 CAAAGTG-ACACTTG--CAGATG--CTG--G-CTTCATCA-A-ACAATATGGT-GA-TTG
+               2460 ||||-||-|||-|||--||-||.--|||--|-|||..|||-|-|||.|--|||-||-||.
+query          1877 CAAA-TGTACA-TTGTACA-ATCTACTGATGTCTTGGTCATAGACACT--GGTAGAATTT
+
+target         2519 CCT-TGGTGATATTGCT-GCTAGAGACCTCATTTGTGC--A---CAA-A-AGTT-T-A-A
+               2520 |-|-||||.|.|.|..|-|-||-|-|----|||||||.--|---|||-|-||||-|-|-|
+query          1932 C-TGTGGTAACACTAATAG-TA-A-A----ATTTGTGGGTATGGCAATAGAGTTATTAGA
+
+target         2567 CG---GC--CTTACTGTTT-TGCCACCTT-TGCTCACAGA-T-G--AA--ATG-ATTG-C
+               2580 -|---||--||.|.|-|||-|||-|||..-||.-||.||.-|-|--||--|||-||||-|
+query          1984 -GTAAGCAACTGAAT-TTTCTGC-ACCAAGTGA-CATAGTGTAGGCAATGATGGATTGAC
+
+target         2612 TCAA-TACACTTC-TGCACTGTTAGCG-GGTACAATCACTTCTG-GT-TGGACCTTTGGT
+               2640 |-|.-||||||.|-|||.|-|.---||-||-|.|||.|.|-|||-||-||-|--|...-|
+query          2040 T-AGCTACACTACGTGCCC-GC---CGAGG-AGAATTAGT-CTGAGTCTG-A--TAAC-T
+
+target         2667 GCAGGTGCTGCAT-TACA-AA-T-ACCAT-TTGCTATGCAA---ATGGCTTATAGGT--T
+               2700 --||---|-||||-||||-||-|-|||-|-|||||-||...---||||.|-|-|||.--|
+query          2089 --AG---C-GCATATACATAAATGACC-TCTTGCT-TGGTTTTGATGGGT-A-AGGCCGT
+
+target         2717 TAA--TGGTATTGGAGTTACACAGAATGT--TCTCTATG-AGAACCAAAAATTGATTGCC
+               2760 |||--|--|-|||.-|---||||-||||.--||||||-|-||--|-||.|-|.-|---||
+query          2139 TAAACT--T-TTGT-G---CACA-AATGAGGTCTCTA-GCAG--C-AATA-TC-A---CC
+
+target         2772 AAC-CAATTTA--ATAGTGCTATTGGCAAAATTCAAGACTCA-CTTTCTTCCACAGCAAG
+               2820 ||.-||||.-|--|||.||-|-|||--|---|.-|||-|-||-|.|-||------|||||
+query          2182 AAGGCAATC-ACCATATTG-T-TTG--A---TG-AAG-C-CAGCAT-CT------GCAAG
+
+target         2828 TG-CACTT-G--GAAAACTTCAAGATGTGGTCAAC-CAAAATGCACAAGCTTTAAACACG
+               2880 ||-|||||-|--|||||.|--|-|||.|--|||..-||..-||..-|-||---|||.--|
+query          2224 TGTCACTTTGTTGAAAAGT--A-GATCT--TCATTTCATC-TGTG-A-GC---AAAG--G
+
+target         2883 CTTGTTAAACAACTTAGCTCCAATTTTG-GTGCAATTTCAAGTGTTTTAAATG-ATAT-C
+               2940 -|.|..|||||--|---|||-|-|.--|-|..||-||-|.-||||---||.|.-|-||-|
+query          2271 -TGGCAAAACA--T---CTC-A-TA--GAGAACA-TT-CT-GTGT---AACTCCA-ATAC
+
+target         2940 CTTTCA-CGTCT-TGA-CAAAGTTGAGGC-TGAAGTGCAAATTGATAGGTTGATCACAGG
+               3000 |.||.|-|--||-|.|-|.|.-|||---|-|-|-|--|||||.|-||.-|||-|-|-|.|
+query          2314 CATTAAAC--CTATAAGCCAT-TTG---CAT-A-G--CAAATGG-TAT-TTG-T-A-ATG
+
+target         2996 CAG-ACTTCAAAGTTTGCAGACATATGTGACTCAACAATTAATTAGAGCTGCAGAAATCA
+               3060 |||-||--|----|--|||.-||.|-|-|--||--|||----------|--|||||.|--
+query          2359 CAGCAC--C----T--GCAC-CAAA-G-G--TC--CAA----------C--CAGAAGT--
+
+target         3055 GAGCTTCTGCTAATCTTGCTGCTACTAAAATGTCAGAGTGTGTACTTGGA-CAATC 3110
+               3120 ||--||--|-||.-|---|-||||--|.|.||-||||.-|||||-|||-|-||||| 3176
+query          2390 GA--TT--G-TAC-C---C-GCTA--ACAGTG-CAGAA-GTGTA-TTG-AGCAATC 2430
+
