@@ -1,6 +1,5 @@
 import os.path
 import os
-import random
 
 from pyvis.network import Network
 import networkx as nx
@@ -244,6 +243,51 @@ class Assembler:
         # remove low probable
         self.contigs = [c for c in self.contigs if sum(c['weight'])/len(c['weight']) > 10]
 
+        # remove low probable
+        remove_idx = []
+        new_contigs_map = {}
+        for idx1, con1 in enumerate(self.contigs):
+            contig1_start = con1['path'][0][0]
+            for idx2, con2 in enumerate(self.contigs):
+                if idx1 == idx2:
+                    continue
+
+                contig2_node_list = [x[0] for x in con2['path']]
+                contig2_node_list.append(con2['path'][-1][1])
+                st2 = None
+                for ii, v in enumerate(contig2_node_list):
+                    if v == contig1_start:
+                        st2 = ii
+
+                if st2 is not None:
+                    intersection_path1_nodes = [x[0] for x in con1['path']]
+                    intersection_path1_nodes.append(con1['path'][-1][1])
+                    intersection_path2_nodes = [x[0] for x in con2['path'][st2:]]
+                    intersection_path2_nodes.append(con2['path'][-1][1])
+                    assembled_1, assembled_2 = '', ''
+                    for src_node in intersection_path1_nodes:
+                        child_seq = self.assembling_graph.idx2label[src_node]
+                        if assembled_1 == '':
+                            assembled_1 = child_seq
+                        else:
+                            assembled_1 = assembled_1 + child_seq[self.K - 2:]
+
+                    for src_node in intersection_path2_nodes:
+                        child_seq = self.assembling_graph.idx2label[src_node]
+                        if assembled_2 == '':
+                            assembled_2 = child_seq
+                        else:
+                            assembled_2 = assembled_2 + child_seq[self.K - 2:]
+
+                    if len(assembled_1) > len(assembled_2):
+                        new_contigs_map[idx2] = {'path': self.contigs[idx2]['path'][:st2] + self.contigs[idx1]['path'],
+                                                 'weight': self.contigs[idx2]['weight'][:st2] + self.contigs[idx1]['weight']}
+                        remove_idx.append(idx1)
+
+        for kk in new_contigs_map.keys():
+            self.contigs[kk] = new_contigs_map[kk]
+
+        self.contigs = [c for i, c in enumerate(self.contigs) if i not in remove_idx]
 
     def assemble(self):
         all_vertex = list(self.debrujin_graph.get_vertices())
@@ -307,9 +351,9 @@ class Assembler:
                 prev_neighbor = None
                 for n in neighbor['in']:
                     if (n, v) not in visited_edges:
-                        eulerian_path.append((n, v))
+                        eulerian_path.insert(0, (n, v))
                         visited_edges.append((n, v))
-                        eulerian_weight.append(self.assembling_graph.graph[n][v]['w'])
+                        eulerian_weight.insert(0, self.assembling_graph.graph[n][v]['w'])
                         out_degree_dict[n] -= 1
                         in_degree_dict[v] -= 1
                         v = n
@@ -327,8 +371,8 @@ class Assembler:
 
         print("Assembly Done........................")
 
-        self.contigs.sort(key=lambda x: len(x['path']), reverse=True)
         self.merge_contigs()
+        self.contigs.sort(key=lambda x: len(x['path']), reverse=True)
 
         contig_file = open("contigs.fna", "w")
         self.eulerian_paths = self.debrujin_graph.__copy__()
