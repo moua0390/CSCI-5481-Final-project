@@ -61,7 +61,7 @@ class Graph:
                 'in': [in_v for in_v, _ in self.graph.in_edges(v)]}
 
     def merge_vertices_path(self, v_path):
-        print("Path is merging: ", v_path)
+        print('Path is merging: ', v_path)
         v_source = v_path[0]
         path_weight_list = []
         path_weight = self.graph.out_degree(v_source, weight='w')
@@ -85,7 +85,7 @@ class Graph:
             del self.label2idx[v_source_label]
             del self.label2idx[v_dest_label]
 
-        print("Path Weight: ", path_weight_list)
+        print('Path Weight: ', path_weight_list)
         path_end_branches = list(self.graph.out_edges(v_source))
         if len(path_end_branches) > 0:
             next_v = path_end_branches[0][1]
@@ -120,7 +120,7 @@ class Assembler:
 
     def load_read_data(self, read_path):
         if not os.path.exists(read_path):
-            print(f"File does not exist: {read_path}")
+            print(f'File does not exist: {read_path}')
             return -1
         with open(read_path, 'r') as f:
             reads_data = f.readlines()
@@ -131,9 +131,9 @@ class Assembler:
                 self.seqs.append(r[:-1])
                 seq_lengths.append(len(r[:-1]))
 
-        print("Loading Data..")
-        print(f"Min Length: {min(seq_lengths)}, Max Length: {max(seq_lengths)},"
-              f" Average: {sum(seq_lengths)/len(seq_lengths)}")
+        print('Loading Data..')
+        print(f'Min Length: {min(seq_lengths)}, Max Length: {max(seq_lengths)},'
+              f' Average: {sum(seq_lengths)/len(seq_lengths)}')
 
         return 1
 
@@ -147,16 +147,22 @@ class Assembler:
                 self.debrujin_graph.add_vertex(v1)
                 self.debrujin_graph.add_vertex(v2)
                 self.debrujin_graph.add_edge(v1, v2)
-        print(f"Create a debrujin graph with {len(self.debrujin_graph.get_vertices())} vertices and"
-              f" {len(self.debrujin_graph.get_edges())} edges")
+        print(f'Create a debrujin graph with {len(self.debrujin_graph.get_vertices())} vertices and'
+              f' {len(self.debrujin_graph.get_edges())} edges')
 
     def plot_debrujin_graph(self, name='debrujin_graph'):
         net = self.debrujin_graph.plot()
-        net.show(f'{name}_k_{self.K}.html')
+        graphs_folder = 'graphs'
+        if not os.path.exists(graphs_folder):
+            os.mkdir(graphs_folder)
+        net.show(f'{graphs_folder}/{name}_k_{self.K}.html')
 
     def plot_eulerian_path(self, name='eulerian_graph'):
         net = self.eulerian_paths.plot(width=1000, height=1000)
-        net.show(f'{name}_k_{self.K}.html')
+        graphs_folder = 'graphs'
+        if not os.path.exists(graphs_folder):
+            os.mkdir(graphs_folder)
+        net.show(f'{graphs_folder}/{name}_k_{self.K}.html')
 
     def simplify_debrujin_graph(self):
         all_edges = self.debrujin_graph.get_edges()
@@ -364,17 +370,17 @@ class Assembler:
                 else:
                     neighbor = prev_neighbor
 
-            print("PATH: ", eulerian_path)
+            print('PATH: ', eulerian_path)
             self.contigs.append({'path': eulerian_path, 'weight': eulerian_weight})
             # all_vertex = list(set(all_vertex).difference(eulerian_path))
             all_edges = list(set(all_edges).difference(eulerian_path))
 
-        print("Assembly Done........................")
+        print('Assembly Done........................')
 
         self.merge_contigs()
         self.contigs.sort(key=lambda x: len(x['path']), reverse=True)
 
-        contig_file = open("contigs.fna", "w")
+        contig_file = open('contigs.fna', 'w')
         self.eulerian_paths = self.debrujin_graph.__copy__()
         contig_list = [x['path'] for x in self.contigs]
         for idx, contig in enumerate(contig_list, 1):

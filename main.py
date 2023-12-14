@@ -5,7 +5,6 @@ import os.path
 
 def alignment():
     # Retrieve sequence from whole genome file
-    # whole_genome_id = 'SARS-CoV-2_whole_genome'
     whole_genome_id = 'sars_spike_protein_assembled'
     whole_genome_seq = None
     with open(f'{whole_genome_id}.fna', 'r') as whole_genome_file:
