@@ -85,7 +85,7 @@ def read_contigs_file(file_path):
     return dict(zip(ids, sequences))
 
 
-k = 11
+k = 31
 test_assembler = Assembler()
 test_assembler.load_read_data('./lighter_out/sars_spike_protein_raw_reads_trimmed.cor.fq')
 test_assembler.create_debrujin_graph(k=k)

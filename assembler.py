@@ -392,7 +392,6 @@ class Assembler:
                     assembled = assembled + child_seq[self.K-2:]
             self.assembled_contigs.append(assembled)
             print(f'Assembled contig {idx}: {assembled}')
-            self.plot_eulerian_path(f'contig_{idx}')
             contig_file.write(f'>Contig {idx}\n{assembled}\n')
         contig_file.close()
 
